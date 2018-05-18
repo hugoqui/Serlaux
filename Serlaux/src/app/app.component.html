@@ -1,7 +1,47 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<ul>
-    <li><a routerLink="inicio">Home</a></li>
-    <li><a routerLink="about">About</a></li>
-</ul>
+<nav class="navbar navbar-expand-lg navbar-dark blue fixed-top">
+  <a class="navbar-brand" href="#"><img src="../assets/images/logo.png" width="140" alt=""></a>
 
-<app-inicio></app-inicio>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" style="margin-left: auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Servicios
+        </a>
+        <div class="dropdown-menu blue" aria-labelledby="navbarDropdown" style="background-color: rgba(0, 120, 193, .85)">
+          <a class="dropdown-item" href="#">Limpieza para Oficinas</a>
+          <a class="dropdown-item" href="#">Limpieza para Comunidades</a>
+          <a class="dropdown-item" href="#">Limpieza de Cristales</a>
+          <a class="dropdown-item" href="#">Limpieza de Conductos</a>
+          <a class="dropdown-item" href="#">Servicio de Pest-control</a>
+          <a class="dropdown-item" href="#">Servicios Domésticos</a>
+          <a class="dropdown-item" href="#">Servicios Asistenciales</a>
+          <a class="dropdown-item" href="#">Servicio de Lavandería</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Presupuestos en Línea
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgba(0, 120, 193, .85)">
+          <a class="dropdown-item" href="#">Oficinas</a>
+          <a class="dropdown-item" href="#">Comunidades</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contáctenos</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="" style="margin-bottom: 30px; padding-bottom: 30px;">
+  <app-inicio></app-inicio>
+</div>

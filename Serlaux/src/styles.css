@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+.navbar {
+  background-image: url('assets/images/bg.png');
+  background-repeat: repeat-x;
+}
+
+.container {background-color: #fff;}
+
+.blue{
+  background-color: rgb(52, 123, 216);
+  color: #fff ;
+}
+
+.blue a { color: #fff}
+
+body{ background-color: #f0f0f0}
+
+.carruselTitle {
+  width: auto;
+  margin-right: -15px; margin-left: -15px;
+  padding: 15px 50px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, .5)
+}
+
+.checklist-ul {
+  list-style-type: none;
+  padding: 0;
+ }
+ .checklist-ul li {
+    padding: 0 0 0 25px;
+    position: relative;
+    margin-bottom: 15px;
+  }
+
+  .checklist-ul li::before {
+      position: absolute;
+      left: 5px;
+      content: "\2713";
+      color: #666;
+  }
