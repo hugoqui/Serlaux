@@ -16,14 +16,14 @@
           Servicios
         </a>
         <div class="dropdown-menu blue" aria-labelledby="navbarDropdown" style="background-color: rgba(0, 120, 193, .85)">
-          <a class="dropdown-item" href="#">Limpieza para Oficinas</a>
-          <a class="dropdown-item" href="#">Limpieza para Comunidades</a>
-          <a class="dropdown-item" href="#">Limpieza de Cristales</a>
-          <a class="dropdown-item" href="#">Limpieza de Conductos</a>
-          <a class="dropdown-item" href="#">Servicio de Pest-control</a>
-          <a class="dropdown-item" href="#">Servicios Domésticos</a>
-          <a class="dropdown-item" href="#">Servicios Asistenciales</a>
-          <a class="dropdown-item" href="#">Servicio de Lavandería</a>
+          <a class="dropdown-item" href="/oficinas">Limpieza para Oficinas</a>
+          <a class="dropdown-item" href="/comunidades">Limpieza para Comunidades</a>
+          <a class="dropdown-item" href="/ventanas">Limpieza de Cristales</a>
+          <a class="dropdown-item" href="/conductos">Limpieza de Conductos</a>
+          <a class="dropdown-item" href="/pestcontrol">Servicio de Pest-control</a>
+          <a class="dropdown-item" href="/serviciodomestico">Servicios Domésticos</a>
+          <a class="dropdown-item" href="/servicioasistencial">Servicios Asistenciales</a>
+          <a class="dropdown-item" href="/lavanderia">Servicio de Lavandería</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -36,12 +36,12 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Contáctenos</a>
+        <a class="nav-link" href="/contacto">Contáctenos</a>
       </li>
     </ul>
   </div>
 </nav>
 
 <div class="" style="margin-bottom: 30px; padding-bottom: 30px;">
-  <app-inicio></app-inicio>
+    <router-outlet></router-outlet>
 </div>

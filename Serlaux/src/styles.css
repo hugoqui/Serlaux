@@ -1,10 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+.col-sm-4{ margin-top: 3em}
+h2 {border-bottom: solid}
 .navbar {
   background-image: url('assets/images/bg.png');
   background-repeat: repeat-x;
 }
+p {text-align: justify; line-height: 1.7em;}
 
-.container {background-color: #fff;}
+.container {background-color: #fff; padding-bottom: 5em}
 
 .blue{
   background-color: rgb(52, 123, 216);
