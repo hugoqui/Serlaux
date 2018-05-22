@@ -120,7 +120,7 @@
             }            
         }
 
-        var finalHourRate = ((9 * dailyHours) + 4) / 1;
+        var finalHourRate = ((9 * dailyHours) + 4) / dailyHours;
         var weekDays = $("#days").val();
         var weekHours = weekDays * dailyHours;
         var weekTotal = weekHours * finalHourRate;
