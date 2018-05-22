@@ -1,7 +1,10 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerlauxMvc", "SerlauxMvc\SerlauxMvc.csproj", "{090C27D9-3518-4A82-AABB-C2595211D642}"
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SerlauxMvc", "SerlauxMvc\SerlauxMvc.csproj", "{090C27D9-3518-4A82-AABB-C2595211D642}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerlauxAzure", "SerlauxAzure\SerlauxAzure.csproj", "{C9FB6F6E-6E6C-4FA3-B2B3-83913302079E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,5 +16,15 @@ Global
 		{090C27D9-3518-4A82-AABB-C2595211D642}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{090C27D9-3518-4A82-AABB-C2595211D642}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{090C27D9-3518-4A82-AABB-C2595211D642}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9FB6F6E-6E6C-4FA3-B2B3-83913302079E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9FB6F6E-6E6C-4FA3-B2B3-83913302079E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9FB6F6E-6E6C-4FA3-B2B3-83913302079E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9FB6F6E-6E6C-4FA3-B2B3-83913302079E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {786CFF69-82A6-4605-82DA-46C766CC8577}
 	EndGlobalSection
 EndGlobal

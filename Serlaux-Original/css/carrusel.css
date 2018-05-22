@@ -1,0 +1,38 @@
+﻿#container .carousel .carousel-previous {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(http://thomlx.free.fr/numerized/styles/images/buttons/prev.png) no-repeat scroll 0 0;
+}
+#container .carousel .carousel-next {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(http://thomlx.free.fr/numerized/styles/images/buttons/next.png) no-repeat scroll 0 0;
+}
+#container .carousel .carousel-control {
+cursor:pointer;
+display:inline-block;
+height:40px;
+line-height:999px;
+overflow:hidden;
+vertical-align:middle;
+width:40px;
+}
+#container .carousel,
+#container .carousel .carousel-wrap{margin:0;border:0;zoom:1;}
+#container .js .carousel-wrap{display:inline-block;vertical-align:middle;width:500px;margin:0 5px 15px;border:1px solid #4f4f4f;background:#1a1a1a;}
+.IE #container .js .carousel-wrap{display:inline;}
+#container .carousel ul{margin:0;padding:0;zoom:1;}
+#container .js ul li{overflow:hidden;display:inline;float:left;width:500px;height:335px;text-align:center;}
+#container .carousel .carousel-control{overflow:hidden;display:inline-block;vertical-align:middle;width:40px;height:40px;cursor:pointer;line-height:999px;zoom:1;}
+#container .carousel .carousel-next{background:url(http://thomlx.free.fr/numerized/styles/images/buttons/next.png) 0 0 no-repeat;}
+#container .carousel .carousel-previous{background:url(http://thomlx.free.fr/numerized/styles/images/buttons/prev.png) 0 0 no-repeat;}
+#container .carousel .carousel-control:hover{-moz-opacity:.7;opacity:0.70;filter:alpha(opacity=70);}
+#container .carousel .disabled,#container .carousel .disabled:hover{-moz-opacity:.1;opacity:0.10;filter:alpha(opacity=10);cursor:default;}
+#container .carousel div{margin:0;padding:0;border:0;}
+#container .carousel ul{padding:0;list-style:none;}
+#container .carousel ul li{position:relative;width:500px;margin:0;}
+#container .carousel ul li cite{position:absolute;bottom:3px;right:10px;line-height:19px;font-size:11px;}
+#container .carousel ul li cite a img{vertical-align:middle;}
+#container .carousel ul li cite a{color:#fff;text-decoration:none;} 

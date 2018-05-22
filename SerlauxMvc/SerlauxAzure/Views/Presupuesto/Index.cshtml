@@ -1,0 +1,136 @@
+﻿<style>
+    td {
+        text-align: justify
+    }   
+</style>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="~/Content/images/contacto1.jpg" alt="First slide">
+        </div>
+
+    </div>
+
+</div>
+<div class="blue">
+    <div class="carruselTitle">
+        <h3>Presupuesto en Línea</h3>
+    </div>
+</div>
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-sm-10 offset-sm-1" style="margin-top: 3em">
+            <h2 class="text-primary">Calcule su Presupuesto </h2>
+            <p>
+                Si no tiene experiencia anterior y si nos da datos de sus oficinas le podemos estimar las horas necesarias de trabajo diario para la limpieza de sus instalaciones.
+                <br />Dándonos también los días de trabajo que desea a la semana le orientamos sobre la mensualidad a pagar por el servicio.
+
+            </p>
+
+            <table class="table table-responsive">
+                <tr>
+                    <td>
+                        <strong>Número de puestos de trabajo</strong> <br />  (Ej. si trabajan 10 personas y cada una tiene una mesa de trabajo el numero seria 10)
+                    </td>
+                    <td style="vertical-align:bottom"><input id="stations" class="form-control" type="number" value="1" /> </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Número de aparatos sanitarios de todos los aseos</strong> <br />
+                        (Ej. si su oficina tiene 2 aseos uno tiene un lavabo y un inodoro -2- y el otro tiene un lavabo un inodoro y una bañera -3- el numero seria 5)
+                    </td>
+                    <td  style="vertical-align:bottom"><input id="bathrooms" class="form-control" type="number" value="1" /> </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Número de ventana</strong> <br />
+                        (Ej. si tiene 10 ventanas y una de ellas es doble el numero seria 11)
+                    </td>
+                    <td style="vertical-align:bottom"><input id="windows" class="form-control" type="number" value="1" /> </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Número de días a la semana que desea el servicio</strong> <br />
+                        (Ej. si quiere el servicio los martes y los jueves el numero seria 2)
+                    </td>
+                    <td style="vertical-align:bottom"><input id="days" class="form-control" type="number" value="1" min="1" max="7" /> </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button class="btn btn-success" style="width:100%" onclick="Calculate()">Calcular</button></td>
+                </tr>
+            </table>
+
+            <hr />
+
+            <table class="table table-bordered" id="quoteTable" style="display:none">
+                <tr>
+                    <td colspan="2" style="text-align:center; font-weight:bold; background-color:#347bd8; color:#fff" >PRESUPUESTO ESTIMADO</td>
+                </tr>
+                <tr>
+                    <td>Horas de trabajo al dia para la limpieza de sus OFICINAS	</td>
+                    <td class="text-right" id="totalHrs"></td>
+                </tr>
+                <tr>
+                    <td>Importe de la mensualidad en Euros</td>
+                    <td class=text-right id="total"> €</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-sm-10 offset-sm-1" style="margin-top: 3em">
+            <p>
+                Telefono: <a href="tel:902 121 131">902 121 131</a> <br>
+                Correo: <a href="mailto:admin@serlaux.com">admin@serlaux.com</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $('.nav-item').removeClass('active');
+    $('#quoteMenu').addClass('active');
+        
+    function Calculate() {
+        var dailyHours = 1; //pendiente
+
+        var stations = $('#stations').val() / 10;
+        var bathrooms = $('#bathrooms').val() / 10;
+        var windows = $('#windows').val() / 40;
+
+        var sum = stations + bathrooms + windows;
+        if (sum < 1) {
+            dailyHours = 1;
+        } else {
+            var _int = Math.trunc(sum);
+            var _dec = sum - _int;
+
+            if (_dec == 0) {  //no decimals
+                dailyHours = sum;
+            } else {
+                if (_dec < 0.5) {
+                    dailyHours = _int;
+                } else {
+                    dailyHours = _int + 0.5;
+                }
+            }            
+        }
+
+        var finalHourRate = ((9 * dailyHours) + 4) / 1;
+        var weekDays = $("#days").val();
+        var weekHours = weekDays * dailyHours;
+        var weekTotal = weekHours * finalHourRate;
+        var total = weekTotal * 4.34;
+        $("#totalHrs").text(weekHours);
+        $("#total").text("€ " + total.toFixed(2));
+        console.log("Horas " + dailyHours);
+        console.log("Total €" + total);
+
+        $("#quoteTable").fadeIn(1000);
+        //$("#quoteTable").removeClass("hidden");
+    }
+</script>

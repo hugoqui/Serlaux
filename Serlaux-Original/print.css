@@ -1,0 +1,102 @@
+body 
+{
+	color:Black;
+	background: transparent;
+	height:300
+}
+#AutoNumber6 TD
+{
+	color:Black;
+	FONT-SIZE: 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+#prn 
+{
+	color:Black;
+	left:0;
+	top:150;
+	position:absolute
+}
+#img 
+{
+  display: none;
+   }
+#menu {
+   display: none;
+   }
+#tit 
+{  
+	  color:Black;
+	  FONT-FAMILY: verdana, arial, sans-serif;
+   width:600;
+   text-align:center;
+   left:0;
+		 top:120;
+	  position:absolute
+}
+#tit1
+{
+   text-align:left;
+   color:Black;
+}
+#rr 
+{
+   text-align:left;
+}
+#DIASSEMANA
+{
+	 display:none
+}
+#fon
+{
+	   text-align:left;
+	   padding-left:8;
+	   font-size: 14px;
+	   FONT-WEIGHT: bold;
+    COLOR:Black;
+    FONT-FAMILY:  verdana, "Lucida Sans Typewriter", helvetica;
+}
+a:link, a:visited {
+   color: #520;
+   background: transparent;
+   font-weight: bold;
+   text-decoration: underline;
+   }
+.datos
+{
+		 font-size: 14px;
+	  FONT-WEIGHT: bold;
+   text-align:left;
+   color:Black
+}
+#nomb
+{
+  display:block;
+	 top:30;
+	 font-size: 24px;
+	 FONT-WEIGHT: bolder;
+	 width:100%;
+  text-align:right;
+  position:absolute
+}
+.contraido {
+   display: none;
+}
+.ctl 
+{
+	 border-style:none;
+	 left:500;
+	 position:absolute
+}
+.ddd 
+{
+	 display:block;
+	 color:Black;
+	 border-style:none;
+	 left:500;
+	 position:absolute
+}
+.btn
+{
+	display:none
+}

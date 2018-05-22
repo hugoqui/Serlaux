@@ -1,0 +1,274 @@
+BODY { margin-left:6; margin-top:6 }
+#basicList {  font-weight: lighter;  font-size: 12px; margin: 0px;  font-family: Verdana, 'Lucida Sans Typewriter',Helvetica; text-decoration: none }
+#basicList TD { font-size: 12px; font-family: Verdana, 'Lucida Sans Typewriter',Helvetica }
+#tOf { margin-top: 2px; margin-bottom: 2px; color: #fff}
+#of2 {font-size: 12px; font-family: Verdana, 'Lucida Sans Typewriter', Helvetica; font-weight:bold; color:#fff; background-color:#ff802b }
+#of2 A:link { color:White }
+#of2 A:visited { color: White; text-decoration: underline }
+#ofR { font-size: 12px; font-weight:bold; color:#ff802b;BACKGROUND-COLOR: #cccc99}
+#ofG { font-size: 12px; font-weight:bold; color:#808080;BACKGROUND-COLOR: #cccc99}
+#AutoNumber1
+{
+	BORDER-COLLAPSE: collapse;
+	PADDING-BOTTOM: 4px;
+	background-color:#cccc99
+}
+#AutoNumber1 TD
+{
+	FONT-SIZE: 12px;
+ font-family: Verdana, "Lucida Sans Typewriter";
+ margin-right: 5px
+}
+#AutoNumber6 TD
+{
+	FONT-SIZE: 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	border-left-width: 1; 
+	border-right-width: 1; 
+	border-top-width: 1;
+	border-bottom-color: #111111;
+	border-bottom-style: solid; 
+	border-bottom-width: 1
+}
+#Tabla
+{
+	BORDER-COLLAPSE: collapse
+}
+#Tabla TD
+{
+	FONT-SIZE: 12px;
+    font-family: Verdana, Arial, Helvetica, sans-serif
+}
+#Tabla LI
+{
+	   color:#ff802b;
+	   font-size:18px;
+	   padding-top:5px;
+	   padding-bottom:5px
+}
+#Tabla TD A:link { color:OLIVE;FONT-WEIGHT: bold }
+#Tabla TD A:visited { color:Olive; FONT-WEIGHT: bold; text-decoration: underline }
+#menu TD
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 10px;
+    LINE-HEIGHT: 14px;
+    FONT-FAMILY: verdana, arial, sans-serif;
+    COLOR: #fff;
+    BACKGROUND-COLOR: #ff802b
+}
+#menu TD A:link { color:White }
+#menu TD A:visited { color: White; text-decoration: underline }
+#lista1 LI 
+{
+    LIST-STYLE-TYPE: square;
+    PADDING-BOTTOM: 4px; 
+    PADDING-TOP: 3px;
+    FONT-SIZE: 12px;
+    font-weight:bold
+}
+#res1
+{
+    PADDING-LEFT: 6px;
+    FONT-WEIGHT: bold;
+    LINE-HEIGHT: 14px;
+    FONT-FAMILY: verdana, arial, sans-serif;
+    PADDING-RIGHT: 2px;
+    font-size: 13px;
+    PADDING-BOTTOM: 2px;
+    PADDING-TOP: 2px;
+    FONT-FAMILY: arial, helvetica, sans-serif;
+    color:#fff;
+    font-weight:bold;
+    background-color:#ff802b
+}
+#res2
+{
+    PADDING-LEFT: 6px;
+    FONT-WEIGHT: bold;
+    LINE-HEIGHT: 14px;
+    FONT-FAMILY: verdana, arial, sans-serif;
+    PADDING-RIGHT: 2px;
+    font-size: 13px;
+    PADDING-BOTTOM: 2px;
+    PADDING-TOP: 2px;
+    FONT-FAMILY: arial, helvetica, sans-serif;
+    color:#fff;
+    font-weight:bold;
+    background-color:#ff802b
+}
+.contraido
+{
+	display:none
+} 
+.mostrado
+{
+	color:black; 
+} 
+TD
+{
+    FONT-SIZE: 11px;
+    FONT-FAMILY: verdana, "Lucida Sans Typewriter", helvetica
+}
+.header
+{
+    background-color:#999966;
+    PADDING-RIGHT: 2px;
+    PADDING-LEFT: 4px;
+    PADDING-BOTTOM: 2px;
+    PADDING-TOP: 2px;
+    FONT-SIZE: 11px;
+    FONT-FAMILY: verdana, arial, sans-serif;
+    FONT-WEIGHT: bold;
+}
+.verde 
+{
+	background-color:#cccc99 }
+	#fon
+{
+	   font-size: 18px;
+	   FONT-WEIGHT: bolder;
+    COLOR: Olive;
+    FONT-FAMILY:  verdana, "Lucida Sans Typewriter", helvetica;
+    BACKGROUND-COLOR: #fff
+}
+.gris
+{
+		  background-color:#cccccc;
+		  color:#666600;
+		  font-weight:bold
+}
+.gris A:link
+{
+	   color:#ff802b
+}
+.gris A:visited
+{
+	   color:#ff802b
+}
+#tit
+{
+		
+				height:7px;
+				background-color:#cccccc;
+				color:Olive;
+				PADDING-LEFT: 20px;
+				PADDING-BOTTOM: 2px;
+    PADDING-TOP: 2px;
+    MARGIN-TOP: 6px;
+    MARGIN-BOTTOM: 4px;
+    font-weight:bold;
+    FONT-SIZE: 18px;
+    FONT-FAMILY: verdana, arial, sans-serif;
+}
+#tit A:link
+{
+    COLOR: #000
+}
+#tit A:visited
+{
+    COLOR: #000
+}
+#tit1 
+{
+	background-color:#c0c0c0;
+	font-size: 18px;
+	font-weight: bold;
+	color:White;
+	font-family:Verdana, "Lucida Sans Typewriter";
+}
+#tit2
+{
+		
+				height:7px;
+				background-color:#cccccc;
+				color:Olive;
+				PADDING-LEFT: 20px;
+				PADDING-BOTTOM: 2px;
+    PADDING-TOP: 2px;
+    MARGIN-TOP: 6px;
+    MARGIN-BOTTOM: 4px;
+    font-weight:bold;
+    FONT-SIZE: 13px;
+    FONT-FAMILY: verdana, arial, sans-serif;
+}
+.nolista
+{
+    FONT-WEIGHT: bold;
+    COLOR: #fff;
+    FONT-FAMILY: arial, helvetica, sans-serif;
+    BACKGROUND-COLOR: #ff802b
+}
+/*#fon
+{
+	   font-size: 18px;
+	   FONT-WEIGHT: bolder;
+    COLOR: #cc3300;
+    FONT-FAMILY:  verdana, "Lucida Sans Typewriter", helvetica;
+    BACKGROUND-COLOR: #fff
+}*/
+.datos
+{
+	   FONT-WEIGHT: bold;
+    COLOR: #fff;
+    FONT-FAMILY: verdana, "Lucida Sans Typewriter", helvetica;
+    BACKGROUND-COLOR: #ff802b
+}
+.datos A:link
+{
+    COLOR: #ffffff
+}
+.datos A:visited
+{
+    COLOR: #ffffff
+}
+.letter
+{
+	 color:#ff802b;
+	 font-weight:bold
+}
+.color { background-color:#ff802b 
+}
+.marq
+{
+    color: White;
+    PADDING-RIGHT: 2px;
+    PADDING-LEFT: 4px;
+    PADDING-BOTTOM: 2px;
+    PADDING-TOP: 2px;
+    FONT-SIZE: 13px;
+    FONT-FAMILY: verdana, arial, sans-serif;
+    FONT-WEIGHT: bold;
+}
+.marq A:link
+{
+    COLOR: White;
+    text-decoration:none
+}
+.marq A:visited
+{
+    COLOR: White;
+    text-decoration:none
+}
+.ctl 
+{
+	  border: 1px solid #999966
+}
+.ddd
+{
+	 display:none
+}
+.error
+{
+	  height:7px;
+	  font-size:xx-small;
+	  color:Red
+}
+.impr
+{
+	  color:White
+}
+#nomb
+{
+	 display:none
+}

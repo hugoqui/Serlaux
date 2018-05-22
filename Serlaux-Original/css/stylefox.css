@@ -1,0 +1,128 @@
+﻿#sitewrap {
+    position: relative;
+    background: #fff;
+    width: 980px;
+    margin: 0 auto;
+    margin-top: 0px;
+    text-align: left;
+    color: #444;
+    border: solid 1px #dbdbdb;
+}
+
+#tagline {
+    color: #666;
+    padding-left: 10px;
+    width: 360px;
+    margin: 40px 15px 0 0;
+    position: absolute;
+    right: 35px;
+    z-index: 10;
+}
+
+div {
+    display: block;
+}
+.large-hdr {
+    font-size: 32px;
+    color: #666;
+    font-weight: bold;
+}
+
+.body1 {
+    font-size: 16px;
+    color: #333;
+    padding: 5px 0;
+}
+
+.body2 {
+    font-size: 16px;
+    color: #999;
+    padding: 5px 0;
+}
+
+.tel-hdr {
+    background: url(img/h1-arrow.jpg) no-repeat 0 2px;
+    padding-left: 30px;
+    font-size: 32px;
+    color: #095aa5;
+    font-weight: bold;
+}
+
+@media screen {
+    .injected stylesheetspan.skype_c2c_print_container {
+        display: none;
+    }
+}
+
+span {
+    direction: ltr;
+    unicode-bidi: embed;
+}
+
+
+@media screen{
+    injected stylesheetspan.skype_c2c_container, span.skype_c2c_container * {
+        color: rgb(0, 175, 253);
+        font-size: 1em;
+        font-family: 'Helvetica Neue Regular', Helvetica, Arial, sans-serif;
+        font-weight: normal;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        vertical-align: baseline;
+        width: auto;
+        background-attachment: scroll;
+        background-color: transparent;
+        background-image: none;
+        background-position: 0px 0px !important;
+        background-repeat: no-repeat !important;
+        border-image: !important;
+        border-left-color: rgb(0, 0, 0);
+        border-left-style: none;
+        border-left-width: 0px;
+        border-top-color: rgb(0, 0, 0);
+        border-top-style: none;
+        border-top-width: 0px;
+        border-right-color: rgb(0, 0, 0);
+        border-right-style: none;
+        border-right-width: 0px;
+        border-bottom-color: rgb(0, 0, 0);
+        border-bottom-style: none;
+        border-bottom-width: 0px;
+        border-collapse: separate;
+        bottom: auto;
+        clear: none;
+        clip: auto;
+        cursor: pointer;
+        display: inline;
+        float: none;
+        font-style: normal;
+        left: auto;
+        letter-spacing: 0px;
+        list-style-image: none;
+        list-style-position: outside;
+        list-style-type: disc;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        padding-left: 0px;
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        page-break-after: auto;
+        page-break-before: auto;
+        page-break-inside: auto;
+        position: static;
+        right: auto;
+        table-layout: auto;
+        text-align: left;
+        text-decoration: none;
+        text-indent: 0px;
+        text-transform: none;
+        text-shadow: none;
+        top: auto;
+        word-spacing: normal;
+        z-index: 0;
+    }
+}
+

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="8" virtualPath="/proyectos/FOXES/fuentes/global.asax" hash="ffffffffb0a1da20" filehash="4347b0d1050f" flags="150000" assembly="App_global.asax" type="ASP.global_asax">
+    <filedeps>
+        <filedep name="/proyectos/FOXES/fuentes/global.asax" />
+    </filedeps>
+</preserve>

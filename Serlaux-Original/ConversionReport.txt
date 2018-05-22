@@ -1,0 +1,59 @@
+﻿Este informe muestra los pasos llevados a cabo para convertir la aplicación Web de ASP.NET 1.1 en ASP.NET 2.0. 
+Puede haber algunos problemas de conversión sin resolver que necesita solucionar manualmente. 
+Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkId=46995 o busque el tema de la Ayuda "Convertir desde Visual Studio .NET 2002 o 2003".
+Se ha iniciado la conversión en el archivo de proyecto linetornet.csproj en April 16 2009, 21:51:31.
+
+=========================ERRORES===================
+ERROR: los siguientes archivos no se migraron porque no se encontraron en el archivo de proyecto o el valor de la configuración 'BuildAction' asociada está establecido como 'None'.
+Puede que tenga que excluir estos archivos del proyecto después del proceso de conversión para compilar el sitio Web: 
+Lista de archivos == global.asax,assemblyinfo.cs,presupuestosotraversion.aspx,prueva2.aspx.cs,global.asax.cs,prueva2.aspx.
+
+=========================ADVERTENCIAS=================
+Advertencia: este proyecto Web se convirtió en una aplicación Web basada en archivos. Si el sitio contenía metainformación de IIS, como subcarpetas marcadas como directorios virtuales, se recomienda que cierre este sitio Web y vuelva a abrirlo con el comando Abrir sitio Web y seleccionando la ficha IIS local.
+
+=========================COMENTARIOS=================
+Web.Config: atributo 'xhtmlConformance' agregado.
+Se ha quitado el atributo AutoEventWireup del archivo Comunidades1.aspx.
+Se ha quitado el atributo Codebehind del archivo Comunidades1.aspx.
+Advertencia: el nivel de acceso de 'Page_Load' cambió a 'protected' en el archivo Comunidades1.aspx.cs (línea 12).
+Advertencia: el nivel de acceso de 'calc1_Click' cambió a 'protected' en el archivo Comunidades1.aspx.cs (línea 175).
+Advertencia: el nivel de acceso de 'printa_Click' cambió a 'protected' en el archivo Comunidades1.aspx.cs (línea 202).
+Se ha quitado el atributo AutoEventWireup del archivo Comunidades2.aspx.
+Se ha quitado el atributo Codebehind del archivo Comunidades2.aspx.
+Advertencia: el nivel de acceso de 'Page_Load' cambió a 'protected' en el archivo Comunidades2.aspx.cs (línea 10).
+Advertencia: el nivel de acceso de 'CALCULATE_Click' cambió a 'protected' en el archivo Comunidades2.aspx.cs (línea 167).
+Se ha quitado el atributo AutoEventWireup del archivo index.aspx.
+Se ha quitado el atributo Codebehind del archivo index.aspx.
+Advertencia: el nivel de acceso de 'Page_Load' cambió a 'protected' en el archivo index.aspx.cs (línea 11).
+Se ha quitado el atributo AutoEventWireup del archivo Delegaciones.aspx.
+Se ha quitado el atributo Codebehind del archivo Delegaciones.aspx.
+Advertencia: el nivel de acceso de 'Page_Load' cambió a 'protected' en el archivo Delegaciones.aspx.cs (línea 20).
+Se ha quitado el atributo AutoEventWireup del archivo Edificios.aspx.
+Se ha quitado el atributo Codebehind del archivo Edificios.aspx.
+Advertencia: el nivel de acceso de 'Page_Load' cambió a 'protected' en el archivo Edificios.aspx.cs (línea 19).
+Se ha quitado el atributo AutoEventWireup del archivo higiene-sanitaria.aspx.
+Se ha quitado el atributo Codebehind del archivo higiene-sanitaria.aspx.
+Advertencia: el nivel de acceso de 'Page_Load' cambió a 'protected' en el archivo higiene-sanitaria.aspx.cs (línea 19).
+Se ha quitado el atributo AutoEventWireup del archivo Oficinas1.aspx.
+Se ha quitado el atributo Codebehind del archivo Oficinas1.aspx.
+Advertencia: el nivel de acceso de 'Page_Load' cambió a 'protected' en el archivo Oficinas1.aspx.cs (línea 11).
+Advertencia: el nivel de acceso de 'CALCULATE_Click' cambió a 'protected' en el archivo Oficinas1.aspx.cs (línea 175).
+Advertencia: el nivel de acceso de 'printa_Click' cambió a 'protected' en el archivo Oficinas1.aspx.cs (línea 212).
+Se ha quitado el atributo AutoEventWireup del archivo Oficinas2.aspx.
+Se ha quitado el atributo Codebehind del archivo Oficinas2.aspx.
+Advertencia: el nivel de acceso de 'Page_Load' cambió a 'protected' en el archivo Oficinas2.aspx.cs (línea 11).
+Advertencia: el nivel de acceso de 'CALCULATE_Click' cambió a 'protected' en el archivo Oficinas2.aspx.cs (línea 168).
+Se ha quitado el atributo AutoEventWireup del archivo suelos.aspx.
+Se ha quitado el atributo Codebehind del archivo suelos.aspx.
+Advertencia: el nivel de acceso de 'Page_Load' cambió a 'protected' en el archivo suelos.aspx.cs (línea 19).
+Se ha quitado el atributo AutoEventWireup del archivo textiles.aspx.
+Se ha quitado el atributo Codebehind del archivo textiles.aspx.
+Advertencia: el nivel de acceso de 'Page_Load' cambió a 'protected' en el archivo textiles.aspx.cs (línea 19).
+Se ha agregado la carpeta App_Code.
+Se ha movido el archivo Foco.cs al directorio App_Code\.
+Esquema de validación HTML cambiado para todos los proyectos a 'Internet Explorer 6.0'.
+Se ha quitado el archivo Bin\linetornet.dll.
+Se ha quitado el archivo Bin\linetornet.pdb.
+Se ha quitado el archivo linetornet.csproj.
+Se ha quitado el archivo linetornet.csproj.webinfo.
+El proyecto linetornet.csproj se ha convertido correctamente en April 16 2009, 21:51:37.

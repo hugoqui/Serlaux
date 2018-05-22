@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "linetornet", "http://localhost/linetor/linetornet.csproj", "{2017C052-4203-4DA8-BF42-CD2DC3C64439}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2017C052-4203-4DA8-BF42-CD2DC3C64439}.Debug|Default.ActiveCfg = Debug|.NET
+		{2017C052-4203-4DA8-BF42-CD2DC3C64439}.Debug|Default.Build.0 = Debug|.NET
+		{2017C052-4203-4DA8-BF42-CD2DC3C64439}.Release|Default.ActiveCfg = Release|.NET
+		{2017C052-4203-4DA8-BF42-CD2DC3C64439}.Release|Default.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F23952E6-31AA-460C-9D0C-CCFE3427D4EE}
+	EndGlobalSection
+EndGlobal
