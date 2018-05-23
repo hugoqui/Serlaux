@@ -125,7 +125,7 @@
         var weekHours = weekDays * dailyHours;
         var weekTotal = weekHours * finalHourRate;
         var total = weekTotal * 4.34;
-        $("#totalHrs").text(weekHours);
+        $("#totalHrs").text(dailyHours);
         $("#total").text("€ " + total.toFixed(2));
         console.log("Horas " + dailyHours);
         console.log("Total €" + total);
