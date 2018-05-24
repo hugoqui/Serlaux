@@ -1,47 +1,246 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <nav class="navbar navbar-expand-lg navbar-dark blue fixed-top">
-  <a class="navbar-brand" href="#"><img src="../assets/images/logo.png" width="140" alt=""></a>
+    <a class="navbar-brand" href="#"><img src="~/Content/images/logo.png" width="140" alt=""></a>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto" style="margin-left: auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Servicios
-        </a>
-        <div class="dropdown-menu blue" aria-labelledby="navbarDropdown" style="background-color: rgba(0, 120, 193, .85)">
-          <a class="dropdown-item" href="/oficinas">Limpieza para Oficinas</a>
-          <a class="dropdown-item" href="/comunidades">Limpieza para Comunidades</a>
-          <a class="dropdown-item" href="/ventanas">Limpieza de Cristales</a>
-          <a class="dropdown-item" href="/conductos">Limpieza de Conductos</a>
-          <a class="dropdown-item" href="/pestcontrol">Servicio de Pest-control</a>
-          <a class="dropdown-item" href="/serviciodomestico">Servicios Domésticos</a>
-          <a class="dropdown-item" href="/servicioasistencial">Servicios Asistenciales</a>
-          <a class="dropdown-item" href="/lavanderia">Servicio de Lavandería</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Presupuestos en Línea
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgba(0, 120, 193, .85)">
-          <a class="dropdown-item" href="#">Oficinas</a>
-          <a class="dropdown-item" href="#">Comunidades</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/contacto">Contáctenos</a>
-      </li>
-    </ul>
-  </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto" style="margin-left: auto">
+            <li class="nav-item" id="homeMenu">
+                <a class="nav-link" href="Home">Inicio</a>
+            </li>
+            <li class="nav-item dropdown" id="serviceMenu">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Servicios
+                </a>
+                <div class="dropdown-menu blue" aria-labelledby="navbarDropdown" style="background-color: rgba(0, 120, 193, .85)">
+                    <a class="dropdown-item" href="/oficinas">Limpieza para Oficinas</a>
+                    <a class="dropdown-item" href="/comunidades">Limpieza para Comunidades</a>
+                    <a class="dropdown-item" href="/ventanas">Limpieza de Cristales</a>
+                    <a class="dropdown-item" href="/conductos">Limpieza de Conductos</a>
+                    <a class="dropdown-item" href="/controlplagas">Servicio de Pest-control</a>
+                    <a class="dropdown-item" href="/serviciodomestico">Servicios Domésticos</a>
+                    <a class="dropdown-item" href="/servicioasistencial">Servicios Asistenciales</a>
+                    <a class="dropdown-item" href="/lavanderia">Servicio de Lavandería</a>
+                </div>
+            </li>
+            @*
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Presupuestos en Línea
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgba(0, 120, 193, .85)">
+                    <a class="dropdown-item" href="#">Oficinas</a>
+                    <a class="dropdown-item" href="#">Comunidades</a>
+                </div>
+            </li>*@
+            <li class="nav-item" id="quoteMenu">
+                <a class="nav-link" href="/presupuesto">Presupuesto en Línea</a>
+            </li>
+            <li class="nav-item" id="contactMenu">
+                <a class="nav-link" href="/contacto">Contáctenos</a>
+            </li>
+        </ul>
+    </div>
 </nav>
 
-<div class="" style="margin-bottom: 30px; padding-bottom: 30px;">
+<div class="" style="margin-top:73px">
     <router-outlet></router-outlet>
+
+    <footer>
+        <h5 class="text-white">&copy; 2018 - Serlaux</h5>
+        <a class=text-primary href="tel:902121131"> <span class="fa-phone fa" style="margin-right:5px"></span> 902 121 131 </a> <br />
+        <a class=text-primary href="mailto:admin@serlaux.com"><span class="fas far fa-envelope" style="margin-right:5px"></span>admin@serlaux.com</a>
+    </footer>
+</div>
+
+<!--Chat-->
+<script type="text/javascript" async="" src="http://s01.live2support.com/js/lsjs1.php?stid=11990&amp;jqry=Y&amp;l2stxt=Y"></script>
+<script type="text/javascript" async="" src="https://www.live2support.com/js/_2_js_l2sjs.php?stid=11990&amp;l2stxt=Y&amp;jqry=Y&amp;cmi=0&amp;ssid11990=119905nc4suudfa7565lvuarw&amp;l2s_lang=3192"></script>
+<script type="text/javascript" async="" src="https://www.live2support.com/js/autochat_greeting_js.php?stid=11990&amp;l2stxt=Y&amp;jqry=Y&amp;cmi=0&amp;url=http://www.marioinstalaciones.com/contact-jims-electrical.htm"></script>
+<script type="text/javascript" async="" defer="">
+    var l2slhight = 400;
+    var l2slwdth = 350;
+    var l2slay_mnst = "#l2snlayer {}";
+    var l2slv = 3;
+    var l2slay_hbgc = "#347bd8";
+    var l2slay_bcolor = "#347bd8";
+    var l2sdialogofftxt = "Live Chat Offline";
+    var l2sdialogontxt = "¿Preguntas? Online";
+    var l2sminimize = true;
+    var l2senblyr = true;
+    var l2slay_pos = "R";
+    var l2sontxt = '';
+    var l2sofftxt = '';
+    var l2s_pht = encodeURI(location.protocol);
+    var l2s_cv = "site=Prestomatic;l2scv;;";
+    if (l2s_pht.indexOf("http") == -1) l2s_pht = 'http:';
+
+    function loadChat() {
+        document.getElementById('l2s_trk').style.visibility = 'hidden';
+        var l2scd = document.createElement('script');
+        l2scd.type = 'text/javascript';
+        l2scd.async = true;
+        l2scd.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 's01.live2support.com/js/lsjs1.php?stid=11990&jqry=Y&l2stxt=Y';
+        var l2sscr = document.getElementsByTagName('script')[0];
+        l2sscr.parentNode.insertBefore(l2scd, l2sscr);
+    }
+
+    $(window).bind("load", loadChat);
+</script>
+<script type="text/javascript">
+    var l2sontxt2 = "chatear con un agente";
+    var l2sofftxt2 = "Live Chat Offline";
+</script>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+<link href="https://www.live2support.com/css/animate.css?v=24" rel="stylesheet" />
+<style type="text/css">
+    #l2greetdiv {
+        max-width: 270px;
+        color: #666;
+        float: right;
+        border: 1px solid #e5e6e6;
+        border-radius: 5px;
+        box-shadow: 2px 3px 10px #e7e8e8;
+        padding: 15px 15px 5px 15px;
+        font-family: roboto;
+        font-size: 13px;
+        min-width: 230px;
+        background: #fff;
+        color: #867f7f
+    }
+    
+    .operator-img {
+        width: 40px;
+        margin-right: 5px;
+        float: left;
+        height: 40px;
+        border-radius: 50% !important;
+        background-size: 100%;
+        border: 2px solid #edf0f0;
+    }
+    
+    #l2greetdiv h5 {
+        display: inline-block;
+        color: #676666;
+        margin: 0;
+    }
+    
+    #message-greet-content,
+    .reply-action {
+        display: block;
+        color: #867f7f;
+        font-size: 13px;
+        cursor: pointer;
+    }
+    
+    .reply-action {
+        color: #3b5998 !important;
+    }
+    
+    .reply-action:hover {
+        color: #565656 !important;
+    }
+    
+    #message-greet-content {
+        line-height: 1.5;
+    }
+    
+    .reply-action {
+        padding: 10px 0 5px 15px
+    }
+    
+    .reply-box {
+        margin: 10px -20px 0 -15px;
+        border-top: 1px solid #eaeaea
+    }
+    
+    .close-action {
+        position: absolute;
+        right: 0;
+        cursor: pointer;
+        top: -30px;
+        border-radius: 50%;
+        background: #c7c7c7;
+        width: 27px;
+        height: 27px;
+        text-align: center;
+    }
+    
+    .close-action img {
+        height: 8px;
+        width: 8px;
+        margin-top: 38%;
+    }
+    
+    .close-action:hover {
+        background: #bfbfbf
+    }
+    
+    .operator-section h5 {
+        font-size: 18px;
+        line-height: 20px;
+        font-weight: 400;
+    }
+    
+    #l2slyrstatus {
+        padding: 11px 0;
+        color: #ffffff;
+        font-size: 14px;
+        font-family: "Roboto", sans-serif;
+        float: left;
+        line-height: 1.35;
+        color: #f7efef;
+    }
+    
+    #l2snlayer {}
+    
+    #l2sminz i {
+        color: #f7efef;
+        position: absolute;
+        right: 0;
+        top: 6px;
+        background-color: transparent
+    }
+    
+    #l2sminz i:hover {
+        top: 8px;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+    }
+    
+    #l2snlayer_body iframe {
+        height: 360px !important
+    }
+    
+    #l2snlayer_head {
+        background-color: #347bd8;
+        display: flex;
+    }
+    
+    #l2snlayer {
+        display: none;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 15px;
+        cursor: pointer;
+    }
+    
+    #l2s_logo1,
+    #l2s_logo {
+        display: inline-block;
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        float: left
+    }
+</style>
+<div id="l2snlayer" class="l2snlayer_animated slideInUp" style="top: auto; bottom: 0px; height: 40px; width: 220px; position: fixed; z-index: 99999; background-color: transparent; border-radius: 3px 3px 0px 0px; left: auto; right: 25px; display: inline;">
+    <div id="l2snlayer_head" style="height: 40px; border-radius: 3px 3px 0px 0px;"><input type="hidden" value="119905nc4suudfa7565lvuarw" id="temp_cookie">
+        <div id="l2s_logo"><img src="https://www.live2support.com/cpn/assets/img/big/3.png?v=10" class="l2s_logo" id="l2s_logo1" style="height: 30px; padding: 6px 12px 0px;"></div>
+        <div id="l2slyrstatus">Chat online</div>
+        <div id="l2sminz" style="display: none;"><svg class="svg-inline--fa fa-angle-down fa-w-10" id="arrow_min" aria-hidden="true" data-prefix="fa" data-icon="angle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"></path></svg>
+            <!-- <i class="fa fa-angle-down" id="arrow_min"></i> --></div>
+    </div>
+    <div id="l2snlayer_body" style="height: 360px; display: none;"></div>
 </div>
