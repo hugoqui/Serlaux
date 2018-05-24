@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-comunidades',
@@ -10,6 +11,8 @@ export class ComunidadesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    $('.nav-item').removeClass('active');
+    $('#serviceMenu').addClass('active');
   }
 
 }

@@ -15,19 +15,23 @@ import { ServiciodomesticoComponent } from './serviciodomestico/serviciodomestic
 import { ServicioasistencialComponent } from './servicioasistencial/servicioasistencial.component';
 import { LavanderiaComponent } from './lavanderia/lavanderia.component';
 import { ContactoComponent } from './contacto/contacto.component';
+import { PresupuestoComponent } from './presupuesto/presupuesto.component';
 
 
 const appRoutes: Routes = [
-  { path: '', component: InicioComponent } ,
+  { path: '', redirectTo: '/inicio', pathMatch: 'full' },
+  { path: 'inicio', component: InicioComponent } ,
   { path: 'oficinas',      component: OficinasComponent },
   { path: 'comunidades',      component: ComunidadesComponent },
   { path: 'contacto',      component: ContactoComponent },
   { path: 'conductos',      component: ConductosComponent },
   { path: 'lavanderia',      component: LavanderiaComponent },
-  { path: 'pestcontrol',      component: PestcontrolComponent },
+  { path: 'controlplagas',      component: PestcontrolComponent },
   { path: 'servicioasistencial',      component: ServicioasistencialComponent },
   { path: 'serviciodomestico',      component: ServiciodomesticoComponent },
   { path: 'ventanas',      component: VentanasComponent },
+  { path: 'presupuesto',      component: PresupuestoComponent },
+  { path: '**', redirectTo: 'inicio'},
 ];
 
 @NgModule({
@@ -42,7 +46,8 @@ const appRoutes: Routes = [
     ServiciodomesticoComponent,
     ServicioasistencialComponent,
     LavanderiaComponent,
-    ContactoComponent
+    ContactoComponent,
+    PresupuestoComponent
   ],
   imports: [
     RouterModule.forRoot(
