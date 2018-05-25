@@ -243,4 +243,70 @@
 }
 </script>
 
+<script>
+
+
+    function enviar_f() {
+        if ($("#empresa").val() == "" | $("#nombre").val() == "" | $("#apellido").val() == "" | $("#ciudad").val() == "" | $("#telefono").val() == "" | $("#email").val() == "" | $("#comentario").val() == "") {
+            alert("faltan datos.")
+        }
+        else {
+            $.post("http://backend.foxclean.es/api/Clientes/Peticion/",
+                {
+                    empresa: $("#empresa").val(),
+                    nombre: $("#nombre").val(),
+                    apellido: $("#apellido").val(),
+                    ciudad: $("#ciudad").val(),
+                    telefono: $("#telefono").val(),
+                    mail: $("#email").val(),
+                    peticion: "SERLAUX: " + $("#comentario").val()
+                },
+                function (data, status) {
+                    if (data == "ok" && status == "success") {
+                        alert("datos enviados.");
+                        $("#empresa").val("");
+                        $("#nombre").val("");
+                        $("#apellido").val("");
+                        $("#ciudad").val("");
+                        $("#telefono").val("");
+                        $("#email").val("");
+                        $("#comentario").val("");
+                    }
+                    else {
+                        alert("error, intente nuevamente");
+                    }
+                    //alert("Data: " + data + "\nStatus: " + status);
+                });
+
+        }
+    }
+
+    function goDown(item) {
+        $('html, body').animate({
+                    scrollTop: $("#" + item).offset().top
+                }, 1000); 
+    }
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("upBtn").style.display = "block";
+        } else {
+            document.getElementById("upBtn").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        //document.body.scrollTop = 0;
+        //document.documentElement.scrollTop = 0;
+        $('html, body').animate({
+                    scrollTop: 0
+                }, 1000); 
+    }
+
+</script>
+
 </html>

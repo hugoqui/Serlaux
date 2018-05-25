@@ -18,22 +18,6 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { PresupuestoComponent } from './presupuesto/presupuesto.component';
 
 
-const appRoutes: Routes = [
-  { path: '', redirectTo: '/inicio', pathMatch: 'full' },
-  { path: 'inicio', component: InicioComponent } ,
-  { path: 'oficinas',      component: OficinasComponent },
-  { path: 'comunidades',      component: ComunidadesComponent },
-  { path: 'contacto',      component: ContactoComponent },
-  { path: 'conductos',      component: ConductosComponent },
-  { path: 'lavanderia',      component: LavanderiaComponent },
-  { path: 'controlplagas',      component: PestcontrolComponent },
-  { path: 'servicioasistencial',      component: ServicioasistencialComponent },
-  { path: 'serviciodomestico',      component: ServiciodomesticoComponent },
-  { path: 'ventanas',      component: VentanasComponent },
-  { path: 'presupuesto',      component: PresupuestoComponent },
-  { path: '**', redirectTo: 'inicio'},
-];
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,10 +34,7 @@ const appRoutes: Routes = [
     PresupuestoComponent
   ],
   imports: [
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
-    ),
+    RouterModule,
     BrowserModule,
     AppRoutingModule
   ],

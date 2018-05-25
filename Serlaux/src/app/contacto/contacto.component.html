@@ -15,21 +15,34 @@
     </div>
 </div>
 <div class="container">
-    <br>
-    <div class="row">
-        <div class="col-sm-10 offset-sm-1" style="margin-top: 3em">
-            <h2 class="text-primary">Contacto  </h2>
-            <p>
-                Valoramos altamente sus preguntas. <br>
-                Llamenos o envienos un correo electrónico
-            </p>
-        </div>
-        <div class="col-sm-10 offset-sm-1" style="margin-top: 3em">
-            <p>
-                Telefono: <a href="tel:902 121 131">902 121 131</a> <br>
-                Correo: <a href="mailto:admin@serlaux.com">admin@serlaux.com</a>
-            </p>
-        </div>
-    </div>
+
+        <div id="contact-form" class="container" style="padding-top: 50px">
+                
+                <form id="miform" action="" class="form-horizontal" style="padding: 40px">
+                        <br>
+                        <div class="form-group row">                    
+                            <div class="col-12 col-md-6"><input class="form-control text" type="text" id="nombre" name="nombre" value="" placeholder="Su nombre" required="required"></div>
+                            <div class="col-12 col-md-6"><input class="form-control text" type="text" id="apellido" name="apellido" value="" placeholder="Apellidos" required="required"></div>
+                        </div>
+                        
+                        <div class="form-group row">                
+                            <div class="col-12 col-md-6"><input class="form-control text" type="text" id="telefono" name="telefono" value="" placeholder="Telefono" required="required"></div>
+                            <div class="col-12 col-md-6"><input class="form-control text" type="text" id="email" name="email" value="" placeholder="Su Email"></div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-12 col-md-6"><input class="form-control text" type="text" id="empresa" name="empresa" value="" placeholder="Nombre de la Empresa"></div>                    
+                            <div class="col-12 col-md-6"><input class="form-control text" type="text" id="ciudad" name="ciudad" value="" placeholder="Ciudad" required="required"></div>
+                        </div>
+                        <div class="form-group row">                
+                            <div class="col-12">
+                                <textarea class="form-control text" rows="4" placeholder="Dinos lo que necesitas" cols="50" id="comentario" name="comentario"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row text-center">
+                            <input type="button" onclick="enviar_f()" value="Enviar" class="btn btn-success" style="margin-left:auto; margin-right:auto; width: 100px">
+                        </div>
+                    </form>
+                </div>
+    
 </div>
 
