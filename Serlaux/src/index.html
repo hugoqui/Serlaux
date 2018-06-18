@@ -203,6 +203,12 @@
 
 </body>
 <script>
+
+    function PrintQuote(){
+        Calculate();
+        window.print();
+    }
+
     function Calculate() {
     var dailyHours = 1; //pendiente
 
@@ -228,7 +234,35 @@
         }            
     }
 
-    var finalHourRate = ((9 * dailyHours) + 4) / dailyHours;
+    var province = $("#town").val();
+    var provinceCost = 4;
+    switch (province){
+        case "28": //Madrid
+            provinceCost = 4;
+            break;
+        case "08": //Barcelona
+            provinceCost = 5;
+            break;            
+        case "41": //Sevilla
+            provinceCost = 6;
+            break;            
+        case "46": //Valencia
+            provinceCost = 7;
+            break;                    
+        case "03": //Alicante
+            provinceCost = 6;
+            break;            
+        case "48": //Bilbao
+            provinceCost = 6;
+            break;                
+        case "50": //Zaragoza
+            provinceCost = 6;
+            break;                
+        default:
+            provinceCost = 4;
+    }
+
+    var finalHourRate = ((9 * dailyHours) + provinceCost) / dailyHours;
     var weekDays = $("#days").val();
     var weekHours = weekDays * dailyHours;
     var weekTotal = weekHours * finalHourRate;
@@ -244,8 +278,6 @@
 </script>
 
 <script>
-
-
     function enviar_f() {
         if ($("#empresa").val() == "" | $("#nombre").val() == "" | $("#apellido").val() == "" | $("#ciudad").val() == "" | $("#telefono").val() == "" | $("#email").val() == "" | $("#comentario").val() == "") {
             alert("faltan datos.")

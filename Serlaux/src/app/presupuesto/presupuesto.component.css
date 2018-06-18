@@ -1,0 +1,15 @@
+@media print {
+    body * {
+      visibility: hidden;
+    }
+    #section-to-print, #section-to-print * {
+      visibility: visible;
+    }
+    #section-to-print {
+        background-color: #ffffff;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+  }
+  

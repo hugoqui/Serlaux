@@ -14,8 +14,10 @@ import { ServicioasistencialComponent } from './servicioasistencial/servicioasis
 import { LavanderiaComponent } from './lavanderia/lavanderia.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { PresupuestoComponent } from './presupuesto/presupuesto.component';
+import { PresupuestocondominiosComponent } from './presupuestocondominios/presupuestocondominios.component';
+import { PresupuestopuntualComponent } from './presupuestopuntual/presupuestopuntual.component';
 
-const appRoutes: Routes = [    
+const appRoutes: Routes = [
     { path: '', component: InicioComponent } ,
     { path: 'oficinas',      component: OficinasComponent },
     { path: 'comunidades',      component: ComunidadesComponent },
@@ -27,6 +29,8 @@ const appRoutes: Routes = [
     { path: 'serviciodomestico',      component: ServiciodomesticoComponent },
     { path: 'ventanas',      component: VentanasComponent },
     { path: 'presupuesto',      component: PresupuestoComponent },
+    { path: 'presupuestocondominios',      component: PresupuestocondominiosComponent },
+    { path: 'presupuestopuntual',      component: PresupuestopuntualComponent },
     { path: '**', redirectTo: ''},
   ];
 

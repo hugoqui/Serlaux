@@ -16,6 +16,8 @@ import { ServicioasistencialComponent } from './servicioasistencial/servicioasis
 import { LavanderiaComponent } from './lavanderia/lavanderia.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { PresupuestoComponent } from './presupuesto/presupuesto.component';
+import { PresupuestocondominiosComponent } from './presupuestocondominios/presupuestocondominios.component';
+import { PresupuestopuntualComponent } from './presupuestopuntual/presupuestopuntual.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { PresupuestoComponent } from './presupuesto/presupuesto.component';
     ServicioasistencialComponent,
     LavanderiaComponent,
     ContactoComponent,
-    PresupuestoComponent
+    PresupuestoComponent,
+    PresupuestocondominiosComponent,
+    PresupuestopuntualComponent
   ],
   imports: [
     RouterModule,

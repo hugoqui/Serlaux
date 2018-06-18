@@ -13,6 +13,4 @@ export class PresupuestoComponent implements OnInit {
     $('.nav-item').removeClass('active');
     $('#quoteMenu').addClass('active');
   }
-
-  
 }

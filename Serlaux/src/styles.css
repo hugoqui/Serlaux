@@ -27,6 +27,10 @@ h2 {
     background-repeat: repeat-x;
 }
 
+.nav-item{
+    padding-left: 18px; padding-right: 18px;    
+}
+
 p {
     text-align: justify;
     line-height: 1.7em;

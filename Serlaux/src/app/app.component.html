@@ -27,8 +27,16 @@
                 </div>
             </li>
             
-            <li class="nav-item" id="quoteMenu">
-                <a class="nav-link" routerLink="/presupuesto">Presupuesto en Línea</a>
+            <li class="nav-item dropdown" id="quoteMenu">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Presupuestos en Linea
+                </a>
+
+                <div class="dropdown-menu blue" aria-labelledby="navbarDropdown" style="background-color: rgba(0, 120, 193, .85)">
+                    <a class="dropdown-item" routerLink="/presupuesto">Presupuesto Oficinas</a>
+                    <a class="dropdown-item" routerLink="/presupuestocondominios">Presupuesto Condominios</a>
+                    <a class="dropdown-item" routerLink="/presupuestopuntual">Presupuesto Puntuales</a>
+                </div>
             </li>
             <li class="nav-item" id="contactMenu">
                 <a class="nav-link" routerLink="/contacto">Contáctenos</a>
