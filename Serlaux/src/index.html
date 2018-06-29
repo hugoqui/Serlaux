@@ -15,6 +15,7 @@
     type="text/javascript"></script>
     
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.2.1/font-awesome-animation.min.css" />
 </head>
 
 <body>
@@ -209,6 +210,8 @@
     <div id="l2snlayer_body" style="height: 360px; display: none;"></div>
 </div>
 
+
+
 </body>
 <script>
 
@@ -322,64 +325,5 @@
     }
 </script>
 
-<!-- Maps -->
-<script> 
-
-    var myLatitude;
-    var myLongitude;
-
-    function ShareLocation() {        
-        if ('geolocation' in navigator) { // check geolocation available 
-            // try to get user current location using getCurrentPosition() method            
-            navigator.geolocation.getCurrentPosition(function(position) {
-                myLatitude = position.coords.latitude;
-                myLongitude = position.coords.longitude;                   
-                console.log(myLatitude, myLongitude);
-                
-                CalculateRoutes();
-            });
-        } else {
-            console.log('Browser doesnt support geolocation!');
-        }
-    }
-
-    function  CalculateRoutes() {
-        var directionsDisplay = new google.maps.DirectionsRenderer();
-        var directionsService = new google.maps.DirectionsService();
-        var map;
-        console.log("uno");
-        var boudha = new google.maps.LatLng(40.4163554, -3.7046296999999413);
-        //var hattisar = new google.maps.LatLng(myLatitude, myLongitude);
-        var hattisar = new google.maps.LatLng(40.4530541, -3.688344499999971);
-        
-        console.log("dos");
-
-        var mapOptions = {
-            zoom: 14,
-            center: boudha
-        };
-        
-        console.log("tres");
-        var request = {
-            origin: boudha,
-            destination: hattisar,
-            travelMode: 'DRIVING'
-        };
-
-        console.log("cuatro");
-
-        directionsService.route(request, function(result, status){
-            console.log(result, status);
-            if(status=="OK"){                
-                var kms = result.routes[0].legs[0].distance.text;
-                $("#distancia").val(kms);
-                console.log(kms);
-                // alert(kms)
-            }
-        });
-    }
-
-    
-</script>
-
+<script type="" src="/assets/js/condominios.js"></script>
 </html>

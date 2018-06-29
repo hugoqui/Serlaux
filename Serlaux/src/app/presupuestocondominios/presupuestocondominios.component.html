@@ -43,22 +43,14 @@
                 <tr>
                     <td>
                         <strong>Localidad</strong> <br /> Para poder proporcionarle un presupuesto adecuado, necesitamos saber su localidad.
+                        <br>
+                        <h5 type="text" class="text-info" id="direccion"></h5>
                     </td>
-                    <td style="vertical-align:bottom">
-                        <button class="btn btn-info" style="width: 100%" onclick="ShareLocation()">
-                            <h4 class="fas fa-map-marker-alt"></h4>
+                    <td style="vertical-align:middle">
+                        <button class="btn" style="width: 100%; background: #ccc" onclick="ShareLocation()">                            
+                            <h4 class="fas fa-map-marker-alt faa-pulse animated"></h4>
                         </button>
-
                         <input type="hidden" id="distancia" />
-                        <!-- <select name="town" id="town" class="form-control" [(ngModel)]="desplazamiento">                            
-                                <option selected="selected" value="4">Madrid</option>
-                                <option value="5">Barcelona</option>
-                                <option value="6">Sevilla</option>
-                                <option value="7">Valencia</option>
-                                <option value="4">Alicante</option>
-                                <option value="4">Bilbao</option>
-                                <option value="4">Zaragoza</option>
-                            </select> -->
                     </td>
                 </tr>
 

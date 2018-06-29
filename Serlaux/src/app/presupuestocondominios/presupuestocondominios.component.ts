@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { NullAstVisitor } from '@angular/compiler';
-import { totalmem } from 'os';
-import { text } from '@angular/core/src/render3/instructions';
+// import { NullAstVisitor } from '@angular/compiler';
+// import { totalmem } from 'os';
+// import { text } from '@angular/core/src/render3/instructions';
 
 // Declaramos las variables para jQuery
 declare var jQuery: any;
@@ -50,7 +50,7 @@ export class PresupuestocondominiosComponent implements OnInit {
         } else {
             this.desplazamiento = this.ConvertirKm(distancia);
 
-            alert('Resultado: ' + this.desplazamiento);
+            // alert('Resultado: ' + this.desplazamiento);
 
             this.precioHora = 12 + this.desplazamiento;
             this.totalSemanal = this.precioHora * this.dias;
@@ -59,15 +59,19 @@ export class PresupuestocondominiosComponent implements OnInit {
         }
     }
 
-    ConvertirKm(texto) {
-        let kms: number = parseInt(texto);
+    ConvertirKm(texto: string) {
+        var kmString = texto.replace('km', '').trim();
+        let kms: number = parseInt(kmString);
+
         let resultado = 2;
-        if (kms <= 20) {
+        if (kms <= 15) {
             resultado = 4;
-        } else if (kms < 40 && kms >= 21) {
+        } else if (kms < 30 && kms >= 16) {
             resultado = 5;
-        } else if (kms < 60 && kms >= 41) {
+        } else if (kms < 45 && kms >= 31) {
             resultado = 6;
+        } else {
+            resultado = 0;
         }
 
         return resultado;
