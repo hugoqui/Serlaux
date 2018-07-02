@@ -25,16 +25,13 @@ export class PresupuestocondominiosComponent implements OnInit {
     totalSemanal: number;
     totalMensual: number;
 
-    miLongitud: any;
-    miLatitud: any;
-
-    latiudOrigen = 40.4163554;
-    longitudOrigen = 3.7046296999999413;
-
     constructor() { }
 
     ngOnInit() {
-        this.horas = 1.5; // minimo de horas 1.5
+        $('.nav-item').removeClass('active');
+        $('#quoteMenu').addClass('active');
+
+        this.horas = 1; // minimo de horas 1
         this.viviendas = 1;
         this.ventanas = 1;
         this.desplazamiento = 4;
@@ -43,53 +40,71 @@ export class PresupuestocondominiosComponent implements OnInit {
 
     CalcularPrecio() {
         let distancia = $('#distancia').val();
+        console.log('distancia sin convertir ', distancia);
+        this.desplazamiento = this.ConvertirKm(distancia);
+        console.log('distancia convertida  ', this.desplazamiento);
 
-        if (distancia == null || distancia === '') {
-            alert('Por favor, comparta su ubicación primero.');
+        if (distancia == null || distancia === '')  {
+            alert('Por favor, indique una localidad.');
             $('#quoteTable').fadeOut();
         } else {
-            this.desplazamiento = this.ConvertirKm(distancia);
+            let horasVentanas: number = this.ventanas / 10;
+            let horasViviendas: number = this.viviendas / 50;
+            console.log('horas ventanas ', horasVentanas);
+            console.log('horas viviendas ', horasViviendas);
 
+            let horas = horasVentanas + horasViviendas;
+            this.horas = horas;
+            horas = parseInt(horas.toString());
+            let diferencia = this.horas - horas;
+            if (diferencia >= 0.5) {
+                diferencia = 0.5;
+            } else {
+                diferencia = 0;
+            }
+            this.horas = horas + diferencia;
+            console.log('total horas ', this.horas);
+
+            if (this.horas < 1) {
+                this.horas = 1;
+            }
+            console.log('total horas final ', this.horas);
             // alert('Resultado: ' + this.desplazamiento);
 
-            this.precioHora = 12 + this.desplazamiento;
-            this.totalSemanal = this.precioHora * this.dias;
+            this.precioHora = ((9 * this.horas) + this.desplazamiento) / this.horas;
+            this.totalSemanal = this.precioHora * this.horas * this.dias;
             this.totalMensual = this.totalSemanal * 4.34; // se promedia a 4.34 semanas al mes
-            $('#quoteTable').fadeIn();
+            if (this.desplazamiento === 0) {
+                alert('Su localidad está fuera de el radio de atención. \nPuede contactar a un asesor para más información.');
+                $('#quoteTable').fadeOut();
+            } else {
+                $('#quoteTable').fadeIn();
+            }
         }
     }
 
     ConvertirKm(texto: string) {
         var kmString = texto.replace('km', '').trim();
+        console.log('kmStrin ', kmString);
+
         let kms: number = parseInt(kmString);
+        console.log('Total kms ', kmString);
 
         let resultado = 2;
-        if (kms <= 15) {
+        if (kms <= 20) {
             resultado = 4;
-        } else if (kms < 30 && kms >= 16) {
+        } else if (kms <= 30 && kms >= 21) {
             resultado = 5;
-        } else if (kms < 45 && kms >= 31) {
+        } else if (kms <= 40 && kms >= 31) {
             resultado = 6;
+        } else if (kms <= 50 && kms >= 41) {
+            resultado = 7;
         } else {
             resultado = 0;
         }
-
+        console.log('Tarifa Aplicada +', resultado);
         return resultado;
     }
 
-    ShowLocation() {
-        if ('geolocation' in navigator) { // check geolocation available 
-            // try to get user current location using getCurrentPosition() method
-            navigator.geolocation.getCurrentPosition(function(position) {
-                this.miLatitud = position.coords.latitude;
-                this.miLongitud = position.coords.longitude;
-
-                $('#result').html('Found your location <br />Lat : ' +
-                position.coords.latitude + ' </br>Lang :' + position.coords.longitude);
-            });
-        } else {
-            console.log('Browser doesnt support geolocation!');
-        }
-    }
 
 }

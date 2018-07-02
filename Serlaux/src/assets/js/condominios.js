@@ -1,15 +1,16 @@
 
-var myLatitude;
-var myLongitude;
+var myLatitude = 40.4163554;
+var myLongitude =  -3.7046296999999413;
 
 function ShareLocation() {        
-    $('#direccion').text('Obteniendo ubicación...');
+    $('#direccion').val('Obteniendo ubicación...');
     if ('geolocation' in navigator) { // check geolocation available 
         // try to get user current location using getCurrentPosition() method            
         navigator.geolocation.getCurrentPosition(function(position) {
+            // myLatitude = 40.5963643;
+            // myLongitude = -3.5081019000000424;                   
             myLatitude = position.coords.latitude;
             myLongitude = position.coords.longitude;                   
-            console.log(myLatitude, myLongitude);
             
             CalculateRoutes();
             GetAddress();
@@ -36,48 +37,142 @@ function AlertLocation() {
 
 function  CalculateRoutes() {    
     var directionsService = new google.maps.DirectionsService();    
-    var boudha = new google.maps.LatLng(40.4163554, -3.7046296999999413);
-    // var hattisar = new google.maps.LatLng(myLatitude, myLongitude);
-    var hattisar = new google.maps.LatLng(40.4530541, -3.688344499999971);
+    var centroMadrid = new google.maps.LatLng(40.4163554, -3.7046296999999413); //Este es el centro de madrid
+    var hattisar = new google.maps.LatLng(myLatitude, myLongitude);
+    
+    console.log('mylatitude es: ', myLatitude);
+    console.log('mylongitud es: ', myLongitude);
+    //var hattisar = new google.maps.LatLng(41.380896, 2.12282);
     var request = {
-        origin: boudha,
+        origin: centroMadrid,
         destination: hattisar,
         travelMode: 'DRIVING'
     };
 
     directionsService.route(request, function(result, status){
+        console.log('Resultado y estado');
         console.log(result, status);
         if(status=="OK"){                
             var kms = result.routes[0].legs[0].distance.text;
-            $("#distancia").val(kms);
-            console.log(kms);
-            // alert(kms)
+            if (true){    //   parseInt(kms) <= 50) {          
+                console.log(kms);    
+                console.log(parseInt(kms));       
+                $("#distancia").val(kms);                
+            } else {
+                //alert('Su ubicación, está fuera de rango para nuestros servicios. \n Puede hablar con alguno de nuestros asesores.')
+            }
         } else {
-            alert('Su ubicación, está fuera de rango para nuestros servicios. \n Puede hablar con alguno de nuestros asesores.')
+            //alert('Su ubicación, está fuera de rango para nuestros servicios. \n Puede hablar con alguno de nuestros asesores.')
         }
     });
 }
 
-function GetAddress() {
+function GetAddress() {    
     var geocoder = new google.maps.Geocoder;
-    var latlng = {lat: 40.4530541, lng: -3.688344499999971};        
-    //var latlng = {lat: myLatitude, lng: myLongitude};
+    //var latlng = {lat: 41.380896, lng: 2.12282};        
+    var latlng = {lat: myLatitude, lng: myLongitude};
     console.log(latlng);
 
     geocoder.geocode({'location': latlng}, function(results, status) {
         if (status === 'OK') {
-        if (results[0]) {
-            
-            var address = results[0].formatted_address;
-            $('#direccion').text(address);
+            if (results[0]) {
+                
+                var address = results[0].formatted_address;
+                
+                map.setCenter(results[0].geometry.location);
+                marker.setPosition(results[0].geometry.location);
 
-            console.log(address);
+                $('#direccion').val(address);                
+                $('.search_latitude').val(myLatitude);
+                $('.search_longitude').val(myLongitude);
+    
+                console.log(address);
+            } else {
+                window.alert('No results found');
+            }
         } else {
-            window.alert('No results found');
-        }
-        } else {
-        window.alert('Geocoder failed due to: ' + status);
+            window.alert('Geocoder failed due to: ' + status);
         }
     
     });
 }
+
+// ShareLocation();
+
+
+/*
+     * autocomplete location search
+     */
+    var PostCodeid = '#search_location';
+    $(function () {
+        $(PostCodeid).autocomplete({
+            source: function (request, response) {
+                geocoder.geocode({
+                    'address': request.term
+                }, function (results, status) {
+                    response($.map(results, function (item) {
+                        return {
+                            label: item.formatted_address,
+                            value: item.formatted_address,
+                            lat: item.geometry.location.lat(),
+                            lon: item.geometry.location.lng()
+                        };
+                    }));
+                });
+            },
+            select: function (event, ui) {
+                $('.search_addr').val(ui.item.value);                
+                $('.search_latitude').val(ui.item.lat);
+                $('.search_longitude').val(ui.item.lon);
+                var latlng = new google.maps.LatLng(ui.item.lat, ui.item.lon);
+                marker.setPosition(latlng);
+                initialize();
+            }
+        });
+    });
+    
+    /*
+     * Point location on google map
+     */
+    $('.get_map').click(function (e) {
+        var address = $(PostCodeid).val();
+        geocoder.geocode({'address': address}, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                map.setCenter(results[0].geometry.location);
+                marker.setPosition(results[0].geometry.location);
+                
+                $('.search_addr').val(results[0].formatted_address);                                
+                $('.search_latitude').val(marker.getPosition().lat());
+                $('.search_longitude').val(marker.getPosition().lng());        
+                
+                myLatitude =  $('.search_latitude').val().trim();
+                myLatitude = parseFloat(myLatitude);
+                myLongitude = $('.search_longitude').val().trim();
+                myLongitude = parseFloat(myLongitude);
+                CalculateRoutes();                
+                $('#search_location').val('');
+            } else {
+                alert("Geocode was not successful for the following reason: " + status);
+            }
+        });
+        e.preventDefault();
+    });
+
+    //Add listener to marker for reverse geocoding
+    google.maps.event.addListener(marker, 'drag', function () {
+        geocoder.geocode({'latLng': marker.getPosition()}, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                if (results[0]) {
+                    $('.search_addr').val(results[0].formatted_address);
+                    $('.search_latitude').val(marker.getPosition().lat());
+                    $('.search_longitude').val(marker.getPosition().lng());
+
+                    myLatitude =  $('.search_latitude').val().trim();
+                    myLatitude = parseFloat(myLatitude);
+                    myLongitude = $('.search_longitude').val().trim();
+                    myLongitude = parseFloat(myLongitude);
+                    CalculateRoutes();
+                }
+            }
+        });
+    });
