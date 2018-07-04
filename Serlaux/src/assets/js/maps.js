@@ -48,10 +48,6 @@ function initialize() {
         
 }
 
-function CheckUrl() {
-    alert('auxilion, no?');
-}
-
 
 $(document).ready(function () {
     initialLat = myLatitude;
