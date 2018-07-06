@@ -1,204 +1,169 @@
 <style>
-        td {
-            text-align: justify
-        }   
-    </style>
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <div id="carouselExampleIndicators" class="carousel slide d-print-none" data-ride="carousel">
-    
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="assets/images/comunidad1.jpg" alt="First slide">
-            </div>    
-        </div>    
-    </div>
-    <div class="blue d-print-none">
-        <div class="carruselTitle">
-            <h3>Presupuesto Puntual</h3>
+    td {
+        text-align: justify
+    }
+</style>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<div id="carouselExampleIndicators" class="carousel slide d-print-none" data-ride="carousel">
+
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="assets/images/comunidad1.jpg" alt="First slide">
         </div>
     </div>
-    <div class="container">
-        <br>
-        <div class="row" id="section-to-print">
-            <div class="col-sm-10 offset-sm-1" style="margin-top: 3em">
-                <div class="d-print-none">
-                    <h2 class="text-primary">Calcule su Presupuesto </h2>
-                    <p>
-                        Si no tiene experiencia anterior y si nos da datos de sus oficinas le podemos estimar las horas necesarias de trabajo diario para la limpieza de sus instalaciones.
-                        <br />Dándonos también los días de trabajo que desea a la semana le orientamos sobre la mensualidad a pagar por el servicio.
-                    </p>
-                </div>
-    
-                <div class="d-none d-print-block">
-                    <div class="text-right">
-                        <img src="assets/images/vans-header2.jpg">
-                    </div>
-                    
-                    <h2 class="text-primary">Presupuesto Puntual</h2>
-                    <p>
-                        El presente presupuesto tiene una validez de 7 días hábiles. <br>
-                        Cualquier ajuste al precio queda sujeto a la tarifa actual.                        
-                    </p>
-                </div>
-    
-                <table class="table table-responsive">
-                    <tr>
-                        <td colspan="2">
-                            <div style="width:100%; height:200px; margin-bottom:20px;" class="text-center" id="geomap">
-                                Cargando Mapa...
-                            </div>
-                            <form class="d-print-none">
-                                <div class="form-group input-group">
-                                    <input type="text" id="search_location" class="form-control" placeholder="Buscar dirección...">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-primary get_map" type="submit">
-                                            <i class="fas fa-search"></i>                                            
-                                        </button>
-                                        <button class="btn btn-secondary" onclick="ShareLocation()" title="Compartir Ubicación">
-                                            <i class="fas fa-map-marker-alt"></i>                                            
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td>
-                            <strong>Localidad</strong> <p class="d-print-none"> Para poder proporcionarle un presupuesto adecuado, necesitamos saber su localidad. </p>                        
-                            <input type="text" class="text-info search_addr disabled" style="border:none; width:100%" id="direccion">
-                        </td>
-                        <input type="hidden" id="distancia" />                    
-                        <input type="hidden" class="search_latitude" size="30">
-                        <input type="hidden" class="search_longitude" size="30">
-        
-                    </tr>
-                    
-                    <tr>
-                        <td>
-                            <strong>Numero de Horas al día</strong> <br />
-                            (Ingrese el número de horas diaras que necesita el servicio, con un mínimo de 4)
-                        </td>
-                        <td  style="vertical-align:bottom"><input id="horas" class="form-control" type="number" value="4" min="4"/> </td>
-                    </tr>
-                    <tr class="d-print-none">
-                        <td colspan="2">
-                            <strong>Materiales Adicionales</strong>
-                        </td>
-                    </tr>
-                    
-                    <tr class="d-print-none">
-                        <td colspan="2">
-                            <label>
-                                    Materiales básicos de limpieza
-                            </label>
-                            <div class="input-group mb-3">                                
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <input type="checkbox" aria-label="Materiales Adicionales" id="basicEquipment">
-                                    </div>
-                                </div>
-                                <input readonly type="text" class="form-control" aria-label="Materiales Adicionales" value="Materiales básicos. (Limpia vidrios, jabón líquido, estopas, etc.)" style="background:#fff">
-                            </div>
-                        </td>
-                    </tr>
-                    
-                    <tr class="d-print-none">
-                        <td colspan="2">
-                            <label>
-                                    Equipo Adicional
-                            </label>
-                            <div class="input-group mb-3">                                
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <input type="checkbox" aria-label="Aspiradora" id="vacuum">
-                                    </div>
-                                </div>
-                                <input readonly type="text" class="form-control" aria-label="Aspiradora" value="Aspiradora para alfombra." style="background:#fff">
-                            </div>
-
-                            <div class="input-group mb-3">                                
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <input type="checkbox" aria-label="Escalera" id="leader">
-                                    </div>
-                                </div>
-                                <input readonly type="text" class="form-control" aria-label="Escalera" value="Escalera." style="background:#fff">
-                            </div>
-
-                            <div class="input-group mb-3">                                
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <input type="checkbox" aria-label="Otro" id="others">
-                                        </div>
-                                    </div>
-                                    <input type="text" class="form-control" aria-label="Otro" placeholder="Otro... (Especifique)" style="background:#fff" id="othersText">
-                                </div>
-                        </td>
-                    </tr>
-
-                    <tr class="d-print-none">
-                        <td></td>
-                        <td><button class="btn btn-success d-print-none" style="width:100%" onclick="CalcularPuntual()">Calcular</button></td>
-                    </tr>
-                </table>
-    
-                <hr />
-    
-                <table class="table table-bordered" id="quoteTable" style="display:none">               
-                    <tr>                    
-                        <td  colspan="2" style="text-align:center; font-weight:bold; background-color:#347bd8; color:#fff" >PRESUPUESTO ESTIMADO</td>
-                    </tr>
-                    <tr>
-                        <td>Total de Horas a Trabajar	</td>
-                        <td class="text-right totalHrs"></td>
-                    </tr>
-
-                    <tr>
-                        <td>Total por <span class="totalHrs"></span> horas de trabajo.</td>
-                        <td  class="text-right" id="subTotal"></td>
-                    </tr>
-
-                    <tr id="rowAditional" style="display:none; font-weight:bold"> <td colspan="2">MATERIALES ADICIONALES</td></tr>
-                    
-                    <tr id="rowBasicEquipment" style="display:none">
-                        <td>Equipo Básico</td>
-                        <td class="text-right" id="totalEquipment"></td>
-                    </tr>
-                    <tr id="rowVacuum" style="display:none">
-                        <td>Aspiradora</td>
-                        <td class="text-right" id="totalVacuum"></td>
-                    </tr>
-                    <tr id="rowLeader" style="display:none">
-                        <td>Escalera</td>
-                        <td class="text-right" id="totalLeader"></td>
-                    </tr>
-                    <tr id="rowOthers" style="display:none">
-                        <td>Otro: <strong id="othersDescription"></strong> </td>
-                        <td class="text-right" id="totalOthers"></td>
-                    </tr>                    
-                    <tr>
-                        <td>Importe total en Euros</td>
-                        <td class="text-right" id="total"> €</td>
-                    </tr>
-                    <tr class="d-print-none">
-                        <td colspan="2" class="text-right" >
-                            <button class="btn btn-outline-info" onclick="PrintQuote()">
-                                Imprimir
-                            </button>
-                        </td>
-                    </tr>
-                </table>
-                
-            </div>
-            
-            <div class="col-sm-10 offset-sm-1 d-print-none" style="margin-top: 3em">
+</div>
+<div class="blue d-print-none">
+    <div class="carruselTitle">
+        <h3>Presupuesto Puntual</h3>
+    </div>
+</div>
+<div class="container">
+    <br>
+    <div class="row" id="section-to-print">
+        <div class="col-sm-10 offset-sm-1" style="margin-top: 3em">
+            <div class="d-print-none">
+                <h2 class="text-primary">Calcule su Presupuesto </h2>
                 <p>
-                    Telefono: <a href="tel:902 121 131">902 121 131</a> <br>
-                    Correo: <a href="mailto:admin@serlaux.com">admin@serlaux.com</a>
+                    Si no tiene experiencia anterior y si nos da datos de sus oficinas le podemos estimar las horas necesarias de trabajo diario
+                    para la limpieza de sus instalaciones.
+                    <br />Dándonos también los días de trabajo que desea a la semana le orientamos sobre la mensualidad a pagar
+                    por el servicio.
                 </p>
             </div>
+
+            <div class="d-none d-print-block">
+                <div class="text-right">
+                    <img src="assets/images/vans-header2.jpg">
+                </div>
+
+                <h2 class="text-primary">Presupuesto Puntual</h2>
+                <p>
+                    El presente presupuesto tiene una validez de 7 días hábiles.
+                    <br> Cualquier ajuste al precio queda sujeto a la tarifa actual.
+                </p>
+            </div>
+
+            <table class="table">
+                <tr>
+                    <td colspan="3">
+                        <div style="width:100%; height:200px; margin-bottom:20px;" class="text-center" id="geomap">
+                            Cargando Mapa...
+                        </div>
+                        <form class="d-print-none">
+                            <div class="form-group input-group">
+                                <input type="text" id="search_location" class="form-control" placeholder="Buscar dirección...">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-primary get_map" type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="ShareLocation()" title="Compartir Ubicación">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="3">
+                        <strong>Localidad</strong>
+                        <p class="d-print-none"> Para poder proporcionarle un presupuesto adecuado, necesitamos saber su localidad. </p>
+                        <input type="text" class="text-info search_addr disabled " style="border:none; width:100%" id="direccion">
+                    </td>
+                    <input type="hidden" id="distancia" />
+                    <input type="hidden" class="search_latitude" size="30">
+                    <input type="hidden" class="search_longitude" size="30">
+
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <strong>Numero de Horas al día</strong>
+                    </td>
+                    <td>
+                        <strong>Total</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-right" width="120">
+                        <input min="4" type="number" value="4" class="form-control " id="hours"> 
+                    </td>
+                    <td> El costo por hora de trabajo es de 3.00 €, con un mínimo de 4 horas.
+                    </td>
+                    <td class="text-right">
+                        12.00 €
+                    </td>                    
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Costo por desplazamiento</td>
+                    <td class="text-right" id="provinceCost">4.00 €</td>
+                </tr>
+            </table>
+
+
+            <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <i class="fas fa-plus-circle"></i> Incluir Materiales (Marque los que necesite)
+            </a>
+            <br>
+
+            <div class="collapse" id="collapseExample">
+                <table class="table">
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="basicEquipment" class="">
+                        </td>
+                        <td>Materiales Básicos (Cubo, recogedor, fregona, etc.)</td>
+                        <td class="text-right">
+                            <span id="basicEquipmentPrice">20.00 €</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="vacuum" class="">
+                        </td>
+                        <td>Aspiradora</td>
+                        <td class="text-right">
+                            <span id="vacuumPrice">25.00 €</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="leader" class="">
+                        </td>
+                        <td>Escalera</td>
+                        <td class="text-right">
+                            <span id="leaderPrice">25.00 €</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="others">
+                        </td>
+                        <td colspan="2">
+                            <span>Otro...</span>
+                            <input style="display: none" type="text" class="form-control" placeholder="Por favor, describa brevemente sus requerimientos." id="othersText">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <table class="table">
+                <tr>
+                    <td><strong>Importe Total</strong></td>
+                    <td class="text-right" id="total"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-sm-10 offset-sm-1 d-print-none" style="margin-top: 3em">
+            <p>
+                Telefono:
+                <a href="tel:902 121 131">902 121 131</a>
+                <br> Correo:
+                <a href="mailto:admin@serlaux.com">admin@serlaux.com</a>
+            </p>
         </div>
     </div>
-    
-    
+</div>
