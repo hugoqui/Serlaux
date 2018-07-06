@@ -1,8 +1,9 @@
 function CalcularPuntual() {
-    alert("No pos si");
-
-    var hours = $("#horas").val(); //pendiente
+    var hours = $("#hours").val(); //pendiente
     hours = parseInt(hours);
+    var subTotal = hours * 3;
+    $("#totalPerHours").text(subTotal.toFixed(2) + " €")
+
 
     var kms = $("#distancia").val();
     kms = kms.replace("km", "");
@@ -24,10 +25,10 @@ function CalcularPuntual() {
             provinceCost = 7;
             break;
         default:
-            provinceCost = 0;
+            provinceCost = 4; //estaba antes a 0
     }
 
-    $("#provinceCost").text(provinceCost);
+    $("#provinceCost").text(provinceCost.toFixed(2) + " €");
 
     var leaderPrice = 25;
     var vacuumPrice = 25;
@@ -39,42 +40,45 @@ function CalcularPuntual() {
 
     var total = 0;
 
-    if (provinceCost > 0) {
-        hours = $("#hours").val();
-        var subTotal = hours * 4;
-        total = total + subTotal;
+    total = total + subTotal + provinceCost;
 
-        //Descuento si tiene las 2
-        if (needsLeader && needsVacuum) {
-            leaderPrice = 20;
-            vacuumPrice = 20;
-        } else {
-            leaderPrice = 25;
-            vacuumPrice = 25;
-        }
-
-        if (needsLeader) {
-            total = total + leaderPrice;
-        }
-
-        if (needsEquipment) {
-            total = total + equipmentPrice;
-        }
-
-        if (needsVacuum) {
-            total = total + vacuumPrice;
-        }
-
-        $("#total").text(total.toFixed(2) + " €");
+    //Descuento si tiene las 2
+    if (needsLeader && needsVacuum) {
+        leaderPrice = 20;
+        vacuumPrice = 20;
     } else {
-        alert(
-            "Su ubicación, está fuera de rango para nuestros servicios. \n Puede hablar con alguno de nuestros asesores."
-        );
+        leaderPrice = 25;
+        vacuumPrice = 25;
     }
+
+    if (needsLeader) {
+        $("#leaderPrice").removeClass("muted");
+        total = total + leaderPrice;
+    } else {
+        $("#leaderPrice").addClass("muted");
+    }
+
+    if (needsEquipment) {
+        $("#basicEquipmentPrice").removeClass("muted");
+        total = total + equipmentPrice;
+    } else {
+        $("#basicEquipmentPrice").addClass("muted");
+    }
+
+    if (needsVacuum) {
+        $("#vacuumPrice").removeClass("muted");
+        total = total + vacuumPrice;
+    } else {
+        $("#vacuumPrice").addClass("muted");
+    }
+
+    $("#leaderPrice").text(leaderPrice.toFixed(2)+ " €");
+    $("#vacuumPrice").text(vacuumPrice.toFixed(2)+ " €");
+    $("#total").text(total.toFixed(2) + " €");
 }
 
 var othersControl = $("#others");
-othersControl.click(function() {
+othersControl.click(function () {
     if (othersControl.is(":checked")) {
         $("#othersText").slideDown();
         $("#othersText").focus();
@@ -83,10 +87,32 @@ othersControl.click(function() {
     }
 });
 
-function Intentar(){
-    $("#miprueba").text("hola");
-}
+$(document).ready(
+    function () {
+        $(".get_map")
+            .click(
+                () => {
+                    setTimeout(function () {
+                        CalcularPuntual()
+                    }, 500)
+                }
+            );
 
-$("#miprueba").onchange(
-    () => { alert('aqui estamos en el 91')}
-)
+        $("#geomap")
+            .mouseup(
+                () => {
+                    // if ($("#distancia").val() != "") {
+                    setTimeout(function () {
+                        CalcularPuntual()
+                    }, 500)
+                    // }
+                }
+            );
+
+        $(".check").click(
+            () => {
+                CalcularPuntual();
+            }
+        );
+    }
+);

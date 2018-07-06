@@ -87,11 +87,11 @@
                 </tr>
                 <tr>
                     <td class="text-right" width="120">
-                        <input min="4" type="number" value="4" class="form-control " id="hours"> 
+                        <input min="4" type="number" value="4" class="form-control " id="hours" onchange="CalcularPuntual()"> 
                     </td>
                     <td> El costo por hora de trabajo es de 3.00 €, con un mínimo de 4 horas.
                     </td>
-                    <td class="text-right">
+                    <td class="text-right" id="totalPerHours">
                         12.00 €
                     </td>                    
                 </tr>
@@ -112,29 +112,29 @@
                 <table class="table">
                     <tr>
                         <td>
-                            <input type="checkbox" id="basicEquipment" class="">
+                            <input type="checkbox" id="basicEquipment" class="check">
                         </td>
                         <td>Materiales Básicos (Cubo, recogedor, fregona, etc.)</td>
                         <td class="text-right">
-                            <span id="basicEquipmentPrice">20.00 €</span>
+                            <span id="basicEquipmentPrice" class="muted">20.00 €</span>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <input type="checkbox" id="vacuum" class="">
+                            <input type="checkbox" id="vacuum" class="check">
                         </td>
                         <td>Aspiradora</td>
                         <td class="text-right">
-                            <span id="vacuumPrice">25.00 €</span>
+                            <span id="vacuumPrice" class="muted">25.00 €</span>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <input type="checkbox" id="leader" class="">
+                            <input type="checkbox" id="leader" class="check">
                         </td>
                         <td>Escalera</td>
                         <td class="text-right">
-                            <span id="leaderPrice">25.00 €</span>
+                            <span id="leaderPrice" class="muted">25.00 €</span>
                         </td>
                     </tr>
                     <tr>
@@ -152,7 +152,7 @@
             <table class="table">
                 <tr>
                     <td><strong>Importe Total</strong></td>
-                    <td class="text-right" id="total"></td>
+                    <td style="font-weight:bold" class="text-right" id="total">16.00 €</td>
                 </tr>
             </table>
         </div>
