@@ -1,54 +1,54 @@
-function PrintQuote(){
+function PrintQuote() {
     Calculate();
     window.print();
 }
 
 function Calculate() {
-var dailyHours = 1; //pendiente
+    var dailyHours = 1; //pendiente
 
-var stations = $('#stations').val() / 10;
-var bathrooms = $('#bathrooms').val() / 10;
-var windows = $('#windows').val() / 40;
+    var stations = $('#stations').val() / 10;
+    var bathrooms = $('#bathrooms').val() / 10;
+    var windows = $('#windows').val() / 40;
 
-var sum = stations + bathrooms + windows;
-if (sum < 1) {
-    dailyHours = 1;
-} else {
-    var _int = Math.trunc(sum);
-    var _dec = sum - _int;
-
-    if (_dec == 0) {  //no decimals
-        dailyHours = sum;
+    var sum = stations + bathrooms + windows;
+    if (sum < 1) {
+        dailyHours = 1;
     } else {
-        if (_dec < 0.5) {
-            dailyHours = _int;
+        var _int = Math.trunc(sum);
+        var _dec = sum - _int;
+
+        if (_dec == 0) { //no decimals
+            dailyHours = sum;
         } else {
-            dailyHours = _int + 0.5;
+            if (_dec < 0.5) {
+                dailyHours = _int;
+            } else {
+                dailyHours = _int + 0.5;
+            }
         }
-    }            
-}
+    }
 
-var kms = $('#distancia').val();
-kms = kms.replace('km', '');
-kms = kms.replace(',','.');
+    var kms = $('#distancia').val();
+    kms = kms.replace('km', '');
+    kms = kms.replace(',', '.');
 
-kms = parseFloat(kms);
-console.log('los kilometros en float', kms)
+    kms = parseFloat(kms);
+    console.log('los kilometros en float', kms)
     var provinceCost = 4;
-    switch (true){
-        case (kms < 20): 
+    switch (true) {
+        case (kms < 20):
             provinceCost = 4;
             break;
-        case (kms < 30): 
+        case (kms < 30):
             provinceCost = 5;
             break;
-        case (kms < 40): 
+        case (kms < 40):
             provinceCost = 6;
             break;
-        case (kms < 50): 
+        case (kms < 50):
             provinceCost = 7;
             break;
-        
+
         default:
             provinceCost = 0;
     }
@@ -69,7 +69,7 @@ console.log('los kilometros en float', kms)
         console.log("Desplazamiento rango +", provinceCost);
         console.log("Horas " + dailyHours);
         console.log("Total €" + total);
-        
+
         $("#quoteTable").fadeIn(1000);
         //$("#quoteTable").removeClass("hidden");    
     } else {
@@ -77,3 +77,35 @@ console.log('los kilometros en float', kms)
     }
 
 }
+
+$(document).ready(
+    function () {
+        $(".daysCheckbox").click(
+            () => {
+                var days = 0;
+                if ($("#mondayBox").is(":checked")) {
+                    days = days + 1;
+                }
+
+                if ($("#tuesdayBox").is(":checked")) {
+                    days = days + 1;
+                }
+
+                if ($("#wednesdayBox").is(":checked")) {
+                    days = days + 1;
+                }
+
+                if ($("#thursdayBox").is(":checked")) {
+                    days = days + 1;
+                } 
+
+                if ($("#fridayBox").is(":checked")) {
+                    days = days + 1;
+                }
+
+                if (days == 0) {days = 1}
+                $("#days").val(days);
+            }
+        );
+    }
+);

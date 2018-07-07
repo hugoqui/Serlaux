@@ -1,7 +1,7 @@
 function CalcularPuntual() {
     var hours = $("#hours").val(); //pendiente
     hours = parseInt(hours);
-    var subTotal = hours * 3;
+    var subTotal = hours * 13;
     $("#totalPerHours").text(subTotal.toFixed(2) + " €")
 
 
@@ -114,5 +114,20 @@ $(document).ready(
                 CalcularPuntual();
             }
         );
+        
+        var _d = new Date();
+        var yy = _d.getFullYear();
+        var mm = _d.getMonth() + 1;
+        var dd = _d.getDay() + 1;
+
+        if (mm <10 ){mm = "0" + mm}
+        if (dd <10 ){dd = "0" + dd}
+
+        $("#myDate").val(yy + "-" + mm + "-" + dd);
+        var hh = _d.getHours();
+        var min = _d.getMinutes();
+        if (hh < 10){hh = "0" + hh}
+        if (min < 10) {min = "0" + min}
+        $("#myTime").val(hh + ":" + min);        
     }
 );

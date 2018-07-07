@@ -17,6 +17,7 @@
         <h3>Presupuesto Puntual</h3>
     </div>
 </div>
+
 <div class="container">
     <br>
     <div class="row" id="section-to-print">
@@ -79,6 +80,19 @@
 
                 <tr>
                     <td colspan="2">
+                        <strong>
+                            <label for="">Fecha</label>
+                            <input type="date" class="form-control" style="max-width:500px" id="myDate" value="hola">
+                        </strong>
+                    </td>
+                    <td>
+                        <label for="" style="font-weight:bold">Hora</label>
+                        <input type="time" class="form-control" id="myTime">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
                         <strong>Numero de Horas al día</strong>
                     </td>
                     <td>
@@ -87,13 +101,13 @@
                 </tr>
                 <tr>
                     <td class="text-right" width="120">
-                        <input min="4" type="number" value="4" class="form-control " id="hours" onchange="CalcularPuntual()"> 
+                        <input min="4" type="number" value="4" class="form-control " id="hours" onchange="CalcularPuntual()">
                     </td>
-                    <td> El costo por hora de trabajo es de 3.00 €, con un mínimo de 4 horas.
+                    <td> El costo por hora de trabajo es de 13.00 €, con un mínimo de 4 horas.
                     </td>
                     <td class="text-right" id="totalPerHours">
-                        12.00 €
-                    </td>                    
+                        52.00 €
+                    </td>
                 </tr>
                 <tr>
                     <td></td>
@@ -111,39 +125,41 @@
             <div class="collapse" id="collapseExample">
                 <table class="table">
                     <tr>
-                        <td>
+                        <td colspan="2">
                             <input type="checkbox" id="basicEquipment" class="check">
+                            <label class="label" for="basicEquipment" style="font-size:1.2em"> Materiales Básicos (Cubo, recogedor, fregona, etc.)</label>
                         </td>
-                        <td>Materiales Básicos (Cubo, recogedor, fregona, etc.)</td>
+                        
                         <td class="text-right">
                             <span id="basicEquipmentPrice" class="muted">20.00 €</span>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td colspan="2">
                             <input type="checkbox" id="vacuum" class="check">
-                        </td>
-                        <td>Aspiradora</td>
+                            <label class="label" for="vacuum" style="font-size:1.2em"> Aspiradora</label>
+                        </td>                       
                         <td class="text-right">
                             <span id="vacuumPrice" class="muted">25.00 €</span>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td colspan="2">
                             <input type="checkbox" id="leader" class="check">
+                            <label class="label" for="leader" style="font-size:1.2em"> Escalera</label>
                         </td>
-                        <td>Escalera</td>
+                        
                         <td class="text-right">
                             <span id="leaderPrice" class="muted">25.00 €</span>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td colspan="3">
                             <input type="checkbox" id="others">
-                        </td>
-                        <td colspan="2">
-                            <span>Otro...</span>
-                            <input style="display: none" type="text" class="form-control" placeholder="Por favor, describa brevemente sus requerimientos." id="othersText">
+                            <label class="label" for="others" style="font-size:1.2em"> Otro</label>
+
+                            <input style="display: none" type="text" class="form-control" placeholder="Por favor, describa brevemente sus requerimientos."
+                                id="othersText">
                         </td>
                     </tr>
                 </table>
@@ -151,8 +167,10 @@
 
             <table class="table">
                 <tr>
-                    <td><strong>Importe Total</strong></td>
-                    <td style="font-weight:bold" class="text-right" id="total">16.00 €</td>
+                    <td>
+                        <strong>Importe Total</strong>
+                    </td>
+                    <td style="font-weight:bold" class="text-right" id="total">56.00 €</td>
                 </tr>
             </table>
         </div>

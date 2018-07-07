@@ -69,11 +69,14 @@ export class PresupuestocondominiosComponent implements OnInit {
                 this.horas = 1;
             }
             console.log('total horas final ', this.horas);
-            // alert('Resultado: ' + this.desplazamiento);
 
             this.precioHora = ((9 * this.horas) + this.desplazamiento) / this.horas;
-            this.totalSemanal = this.precioHora * this.horas * this.dias;
+            const _misdias = $('#days').val();
+            this.totalSemanal = this.precioHora * this.horas * _misdias;
+
             this.totalMensual = this.totalSemanal * 4.34; // se promedia a 4.34 semanas al mes
+            $('#total').text(this.totalMensual.toFixed(2) + ' €');
+
             if (this.desplazamiento === 0) {
                 alert('Su localidad está fuera de el radio de atención. \nPuede contactar a un asesor para más información.');
                 $('#quoteTable').fadeOut();
