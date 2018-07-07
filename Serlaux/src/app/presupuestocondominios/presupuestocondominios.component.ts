@@ -72,6 +72,7 @@ export class PresupuestocondominiosComponent implements OnInit {
 
             this.precioHora = ((9 * this.horas) + this.desplazamiento) / this.horas;
             const _misdias = $('#days').val();
+            this.dias = parseInt(_misdias);
             this.totalSemanal = this.precioHora * this.horas * _misdias;
 
             this.totalMensual = this.totalSemanal * 4.34; // se promedia a 4.34 semanas al mes

@@ -96,8 +96,8 @@ body {
 /*** custom checkboxes ***/
 
 .label {
-    font-size: 20px;
-    margin-right: 30px;
+    font-size: 18px;
+    margin-right: 10px;
 }
 
 input[type=checkbox] {

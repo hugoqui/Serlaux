@@ -103,6 +103,14 @@ $(document).ready(
                     days = days + 1;
                 }
 
+                if ($("#saturdayBox").is(":checked")) {
+                    days = days + 1;
+                }
+
+                if ($("#sundayBox").is(":checked")) {
+                    days = days + 1;
+                }
+
                 if (days == 0) {days = 1}
                 $("#days").val(days);
             }
