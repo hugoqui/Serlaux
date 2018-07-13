@@ -173,7 +173,7 @@ function PuntualSend() {
                 },
                 function (data, status) {
                     if (data == "ok" && status == "success") {
-                        alert("Muchas gracias por contactarnos. \nEn breve un asesor lo contactará.");
+                        alert("Muchas gracias por contactarnos. \nEn breve un asesor le llamará.");
                         
                         location.reload();
                     } else {
