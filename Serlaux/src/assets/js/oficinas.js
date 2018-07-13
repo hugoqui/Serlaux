@@ -78,40 +78,105 @@ function Calculate() {
 
 }
 
+function OfficeSend() {
+    if (isValid()) {      
+        $("#pacifier").show("slow");
+        $.post("http://backend.foxclean.es/api/Clientes/Peticion/", {
+                NOMBRE: $("#name").val(),                
+                CIUDAD: $("#direccion").val(),
+                TELEFONO: $("#telephone").val(),
+                MAIL: $("#email").val(),                
+                FCHA : new Date(),
+                PETICION: "SERLAUX - PRESUPUESTO PARA OFICINAS \n\r" + $("#message").val() +
+                 "\n" + "Numero de puestos de trabajo: " + $("#stations").val() + 
+                 "\n" + "Numero de aparatos sanitarios: " + $("#bathrooms").val() + 
+                 "\n\r" + "Numero de ventanas : " + $("#windows").val() + 
+                 "\n\r" + "Dias de la semana que desea el servicio: " + writtenDays + " - Total (" + $("#days").val() + " dias) " + 
+                 "\n" + "Hora: " + $("#myTime").val() + 
+                 "\n\r" + "Precio por Hora: " + $("#precioHora").text() + 
+                 "\n\r" + "Importe Mensual: " + $("#totalMensual").text()                  
+            },
+            function (data, status) {
+                if (data == "ok" && status == "success") {
+                    alert("Muchas gracias por contactarnos. \nEn breve un asesor lo contactará.");
+                    location.reload();
+                } else {
+                    alert("error, intente nuevamente");
+                }
+            });
+
+    }
+}
+
+function isValid() {
+    var errMsg = "";
+    var name = $("#name").val();
+    if (name == null || name =="") {
+        errMsg = "Por favor, indique su nombre. \n";
+    }
+    var email = $("#email").val();
+    if (email == null || name =="") {
+        errMsg = errMsg + "Por favor, indique su correo electrónico. \n";
+    }
+    var telephone = $("#telephone").val();
+    if (telephone == null || telephone =="") {
+        errMsg =  errMsg + "Por favor, indique su número telefónico. \n";
+    }
+
+    if (errMsg != "") {
+        alert(errMsg);
+        return false;
+    } else {
+        return true;
+    }
+}
+
+var writtenDays ="";
+
 $(document).ready(
     function () {
         $(".daysCheckbox").click(
             () => {
+                writtenDays ="";
                 var days = 0;
                 if ($("#mondayBox").is(":checked")) {
                     days = days + 1;
+                    writtenDays ="Lunes, ";
                 }
 
                 if ($("#tuesdayBox").is(":checked")) {
                     days = days + 1;
+                    writtenDays = writtenDays +  "Martes, ";
                 }
 
                 if ($("#wednesdayBox").is(":checked")) {
                     days = days + 1;
+                    writtenDays = writtenDays +  "Miercoles, ";
                 }
 
                 if ($("#thursdayBox").is(":checked")) {
                     days = days + 1;
-                } 
+                    writtenDays = writtenDays +  "Jueves, ";
+                }
 
                 if ($("#fridayBox").is(":checked")) {
                     days = days + 1;
+                    writtenDays = writtenDays +  "Viernes, ";
                 }
 
                 if ($("#saturdayBox").is(":checked")) {
                     days = days + 1;
+                    writtenDays = writtenDays +  "Sabado, ";
                 }
 
                 if ($("#sundayBox").is(":checked")) {
                     days = days + 1;
+                    writtenDays = writtenDays +  "Domingo, ";
                 }
 
-                if (days == 0) {days = 1}
+                if (days == 0) {
+                    days = 1
+                }
                 $("#days").val(days);
             }
         );

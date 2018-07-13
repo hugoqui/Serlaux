@@ -88,7 +88,7 @@
                         <br>
                     </td>
                     <td style="vertical-align:bottom">
-                        <input [(ngModel)]="viviendas" id="bathrooms" class="form-control" type="number" value="1" /> </td>
+                        <input [(ngModel)]="viviendas" id="houses" class="form-control" type="number" value="1" /> </td>
                 </tr>
                 <tr>
                     <td>
@@ -122,7 +122,7 @@
 
                             <input id="saturdayBox" type="checkbox" class="daysCheckbox" />
                             <label class="label" for="saturdayBox">Sábado</label>
-                            
+
                             <input id="sundayBox" type="checkbox" class="daysCheckbox" />
                             <label class="label" for="sundayBox">Domingo</label>
                         </div>
@@ -148,22 +148,25 @@
                 </tr>
                 <tr>
                     <td>Horas de trabajo al dia para la limpieza de su Comunidad </td>
-                    <td class="text-right" id="totalHrs">{{horas}}</td>
+                    <td class="text-right" id="hours">{{horas}}</td>
                 </tr>
                 <tr>
                     <td>Precio por hora de trabajo </td>
-                    <td class="text-right" id="totalHrs">{{precioHora | number}} €</td>
+                    <td class="text-right" id="priceHour">{{precioHora | number}} €</td>
                 </tr>
                 <tr>
                     <td>Costo semanal, por {{horas}} hora(s) de trabajo diarias en {{dias}} día(s) a la semana </td>
-                    <td class="text-right" id="totalHrs">{{totalSemanal}} €</td>
+                    <td class="text-right" id="weekHours">{{totalSemanal}} €</td>
                 </tr>
                 <tr style="font-weight:bold">
                     <td>Importe de la mensualidad en Euros</td>
-                    <td class="text-right" id="total">  </td>
+                    <td class="text-right" id="total"> </td>
                 </tr>
                 <tr class="d-print-none">
                     <td colspan="2" class="text-right">
+                        <button class="btn btn-outline-success" data-toggle="modal" data-target="#formContact">
+                            Contratar
+                        </button>
                         <button class="btn btn-outline-info" onclick="window.print()">
                             Imprimir
                         </button>
@@ -173,13 +176,48 @@
 
         </div>
 
-        <!--
-        <div class="col-sm-10 offset-sm-1" style="margin-top: 3em">
-            <p>
-                Telefono: <a href="tel:902 121 131">902 121 131</a> <br> Correo: <a href="mailto:admin@serlaux.com">admin@serlaux.com</a>
-            </p>
+        <div class="modal fade" id="formContact" tabindex="-1" role="dialog" aria-labelledby="formContact" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Solicitud de Servicios</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="name">* Nombre</label>
+                                <input required type="text" class="form-control" id="name" placeholder="Ingrese su nombre">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">* Corrreo Electrónico</label>
+                                <input required type="email" class="form-control" id="email" placeholder="Ingrese su dirección de correo">
+                            </div>
+                            <div class="form-group">
+                                <label for="telephone">* Teléfono</label>
+                                <input required type="tel" class="form-control" id="telephone" placeholder="Ingrese su número telefónico" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Detalles adicionales</label>
+                                <textarea class="form-control" id="message"></textarea>
+                            </div>
+                        </form>
+
+                        <div id="pacifier" style="display:none; background-color: rgba(250,250,250,0.85); background-image:url('/assets/images/loading.gif'); background-size: 60px;
+                                        background-position:center; height:100%; width:100%; top:0; left:0; position:absolute; background-repeat: no-repeat;"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" onclick="CondoSend()">Enviar
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-        -->
 
     </div>
 </div>
