@@ -33,7 +33,7 @@ function Calculate() {
     kms = parseFloat(kms);
     const provinceName = $("#provinceName").val().trim();
 
-    $.get("http://localhost:61856/api/values?provincia=" + provinceName,
+    $.get("http://backend.foxclean.es/api/presupuestos/CostoDesplazamientoprov/?provincia=" + provinceName,
 
         function (data) {
             provinceCost = 0;

@@ -11,9 +11,9 @@ function CalcularPuntual() {
 
     var provinceCost = 0;
     var provinceName = $("#provinceName").val().trim();
-    $.get("http://localhost:61856/api/values?provincia=" + provinceName,
+    $.get("http://backend.foxclean.es/api/presupuestos/CostoDesplazamientoprov/?provincia=" + provinceName,
         function (data) {
-            provinceCost = 0;
+            provinceCost = 4;
             for (let i = 0; i < data.length; i++) {
                 const element = data[i];
                 const desde = element.Desde;

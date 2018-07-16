@@ -35,12 +35,13 @@ function CalculateRoutes() {
     }
     $("#provinceName").val(nombreProvincia);
 
-    $.post("http://localhost:61856/api/values/?provincia=" + nombreProvincia, function (data) {
+    $.post("http://backend.foxclean.es/api/presupuestos/CostoDesplazamientopost/?provincia=" + nombreProvincia, function (data) {
         originLatitude = data[0];
-        originLongitude = data[1];
+        originLongitude = data[1];    
+        console.log("Origen lat y ong ", nombreProvincia, originLatitude, originLongitude);    
         var directionsService = new google.maps.DirectionsService();
         var centro = new google.maps.LatLng(originLatitude, originLongitude);
-        var destino = new google.maps.LatLng(myLatitude, myLongitude);
+        var destino = new google.maps.LatLng(myLatitude, myLongitude);        
         var request = {
             origin: centro,
             destination: destino,
@@ -64,13 +65,10 @@ function CalculateRoutes() {
 
 function GetAddress() {
     var geocoder = new google.maps.Geocoder();
-    //var latlng = {lat: 41.380896, lng: 2.12282};
     var latlng = {
         lat: myLatitude,
         lng: myLongitude
     };
-    console.log(latlng);
-
     geocoder.geocode({
             location: latlng
         },
@@ -85,13 +83,11 @@ function GetAddress() {
                     $("#direccion").val(address);
                     $(".search_latitude").val(myLatitude);
                     $(".search_longitude").val(myLongitude);
-
-                    console.log(address);
                 } else {
-                    window.alert("No results found");
+                    window.alert("No es una dirección válida");
                 }
             } else {
-                window.alert("Geocoder failed due to: " + status);
+                window.alert("Hubo un error debido a: " + status);
             }
         }
     );
@@ -155,7 +151,7 @@ $(".get_map").click(function (e) {
                 $("#search_location").val("");
             } else {
                 alert(
-                    "Geocode was not successful for the following reason: " +
+                    "Hubo un error debido a: " +
                     status
                 );
             }

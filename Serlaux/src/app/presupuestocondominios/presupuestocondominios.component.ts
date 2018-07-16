@@ -50,7 +50,7 @@ export class PresupuestocondominiosComponent implements OnInit {
             .trim();
 
         this.http
-            .get("http://localhost:61856/api/values?provincia=" + provinceName)
+            .get("http://backend.foxclean.es/api/presupuestos/CostoDesplazamientoprov/?provincia=" + provinceName)
             .subscribe(response => {
                 this.tablaPrecio = response;
                 console.log(this.tablaPrecio);
