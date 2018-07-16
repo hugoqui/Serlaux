@@ -1,84 +1,64 @@
 var myLatitude = 40.4163554;
 var myLongitude = -3.7046296999999413;
 
-function FindNearestLocation() {
-    var provinceName = $("#direccion")
-        .val()
-        .trim();
-    var p = provinceName.lastIndexOf(",");
-    provinceName = provinceName.substring(0, p);
-    p = provinceName.lastIndexOf(",");
-    provinceName = provinceName.substring(p + 1).trim();
-    p = provinceName.lastIndexOf(" ");
-    if (p > 0) {
-        provinceName = provinceName
-            .substring(p + 1)
-            .trim()
-            .toLowerCase();
-    }
-
-    switch (provinceName) {
-        case "madrid":
-            break;
-        case "barcelona":
-            break;
-        case "zaragoza":
-            break;
-        default:
-            break;
-    }
-}
+var originLatitude = 40.4163554;
+var originLongitude = -3.7046296999999413;
 
 function ShareLocation() {
     $("#direccion").val("Obteniendo ubicación...");
     if ("geolocation" in navigator) {
-        // check geolocation available
-        // try to get user current location using getCurrentPosition() method
-        navigator.geolocation.getCurrentPosition(function(position) {
-            // myLatitude = 40.5963643;
-            // myLongitude = -3.5081019000000424;
+        navigator.geolocation.getCurrentPosition(function (position) {
             myLatitude = position.coords.latitude;
             myLongitude = position.coords.longitude;
-
             CalculateRoutes();
             GetAddress();
         });
     } else {
-        console.log("Browser doesnt support geolocation!");
         alert("Su navegador no soporta la geolocalizacion.");
     }
 }
 
 function CalculateRoutes() {
-    var directionsService = new google.maps.DirectionsService();
-    var centroMadrid = new google.maps.LatLng(40.4163554, -3.7046296999999413); //Este es el centro de madrid
-    var hattisar = new google.maps.LatLng(myLatitude, myLongitude);
+    var nombreProvincia = $("#direccion")
+        .val()
+        .trim();
+    var p = nombreProvincia.lastIndexOf(",");
+    nombreProvincia = nombreProvincia.substring(0, p);
+    p = nombreProvincia.lastIndexOf(",");
+    nombreProvincia = nombreProvincia.substring(p + 1).trim();
+    p = nombreProvincia.lastIndexOf(" ");
+    if (p > 0) {
+        nombreProvincia = nombreProvincia
+            .substring(p + 1)
+            .trim()
+            .toLowerCase();
+    }
+    $("#provinceName").val(nombreProvincia);
 
-    console.log("mylatitude es: ", myLatitude);
-    console.log("mylongitud es: ", myLongitude);
-    //var hattisar = new google.maps.LatLng(41.380896, 2.12282);
-    var request = {
-        origin: centroMadrid,
-        destination: hattisar,
-        travelMode: "DRIVING"
-    };
+    $.post("http://localhost:61856/api/values/?provincia=" + nombreProvincia, function (data) {
+        originLatitude = data[0];
+        originLongitude = data[1];
+        var directionsService = new google.maps.DirectionsService();
+        var centro = new google.maps.LatLng(originLatitude, originLongitude);
+        var destino = new google.maps.LatLng(myLatitude, myLongitude);
+        var request = {
+            origin: centro,
+            destination: destino,
+            travelMode: "DRIVING"
+        };
 
-    directionsService.route(request, function(result, status) {
-        console.log("Resultado y estado");
-        console.log(result, status);
-        if (status == "OK") {
-            var kms = result.routes[0].legs[0].distance.text;
-            if (true) {
-                //   parseInt(kms) <= 50) {
-                console.log(kms);
-                console.log(parseInt(kms));
-                $("#distancia").val(kms);
+        directionsService.route(request, function (result, status) {
+            if (status == "OK") {
+                var kms = result.routes[0].legs[0].distance.text;
+                if (true) {
+                    $("#distancia").val(kms);
+                } else {
+                    //alert('Su ubicación, está fuera de rango para nuestros servicios. \n Puede hablar con alguno de nuestros asesores.')
+                }
             } else {
-                //alert('Su ubicación, está fuera de rango para nuestros servicios. \n Puede hablar con alguno de nuestros asesores.')
+                alert('Su ubicación, está fuera de rango para nuestros servicios. \n Puede hablar con alguno de nuestros asesores.')
             }
-        } else {
-            //alert('Su ubicación, está fuera de rango para nuestros servicios. \n Puede hablar con alguno de nuestros asesores.')
-        }
+        });
     });
 }
 
@@ -91,11 +71,10 @@ function GetAddress() {
     };
     console.log(latlng);
 
-    geocoder.geocode(
-        {
+    geocoder.geocode({
             location: latlng
         },
-        function(results, status) {
+        function (results, status) {
             if (status === "OK") {
                 if (results[0]) {
                     var address = results[0].formatted_address;
@@ -118,22 +97,16 @@ function GetAddress() {
     );
 }
 
-// ShareLocation();
-
-/*
- * autocomplete location search
- */
 var PostCodeid = "#search_location";
-$(function() {
+$(function () {
     $(PostCodeid).autocomplete({
-        source: function(request, response) {
-            geocoder.geocode(
-                {
+        source: function (request, response) {
+            geocoder.geocode({
                     address: request.term
                 },
-                function(results, status) {
+                function (results, status) {
                     response(
-                        $.map(results, function(item) {
+                        $.map(results, function (item) {
                             return {
                                 label: item.formatted_address,
                                 value: item.formatted_address,
@@ -145,7 +118,7 @@ $(function() {
                 }
             );
         },
-        select: function(event, ui) {
+        select: function (event, ui) {
             $(".search_addr").val(ui.item.value);
             $(".search_latitude").val(ui.item.lat);
             $(".search_longitude").val(ui.item.lon);
@@ -156,16 +129,12 @@ $(function() {
     });
 });
 
-/*
- * Point location on google map
- */
-$(".get_map").click(function(e) {
+$(".get_map").click(function (e) {
     var address = $(PostCodeid).val();
-    geocoder.geocode(
-        {
+    geocoder.geocode({
             address: address
         },
-        function(results, status) {
+        function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 map.setCenter(results[0].geometry.location);
                 marker.setPosition(results[0].geometry.location);
@@ -187,7 +156,7 @@ $(".get_map").click(function(e) {
             } else {
                 alert(
                     "Geocode was not successful for the following reason: " +
-                        status
+                    status
                 );
             }
         }
@@ -196,12 +165,11 @@ $(".get_map").click(function(e) {
 });
 
 //Add listener to marker for reverse geocoding
-google.maps.event.addListener(marker, "drag", function() {
-    geocoder.geocode(
-        {
+google.maps.event.addListener(marker, "drag", function () {
+    geocoder.geocode({
             latLng: marker.getPosition()
         },
-        function(results, status) {
+        function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 if (results[0]) {
                     $(".search_addr").val(results[0].formatted_address);
@@ -227,15 +195,13 @@ function CondoSend() {
     if (isValid()) {
         $("#pacifier").show("slow");
         $.post(
-            "http://backend.foxclean.es/api/Clientes/Peticion/",
-            {
+            "http://backend.foxclean.es/api/Clientes/Peticion/", {
                 NOMBRE: $("#name").val(),
                 CIUDAD: $("#direccion").val(),
                 TELEFONO: $("#telephone").val(),
                 MAIL: $("#email").val(),
                 FCHA: new Date(),
-                PETICION:
-                    "SERLAUX - PRESUPUESTO PARA COMUNIDADES \n\r" +
+                PETICION: "SERLAUX - PRESUPUESTO PARA COMUNIDADES \n\r" +
                     $("#message").val() +
                     "\n" +
                     "Numero de viviendas: " +
@@ -259,7 +225,7 @@ function CondoSend() {
                     "Importe Mensual: " +
                     $("#total").text()
             },
-            function(data, status) {
+            function (data, status) {
                 if (data == "ok" && status == "success") {
                     alert(
                         "Muchas gracias por contactarnos. \nEn breve un asesor le llamará."

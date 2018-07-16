@@ -20,6 +20,7 @@ import { PresupuestoComponent } from './presupuesto/presupuesto.component';
 import { PresupuestocondominiosComponent } from './presupuestocondominios/presupuestocondominios.component';
 import { PresupuestopuntualComponent } from './presupuestopuntual/presupuestopuntual.component';
 
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { PresupuestopuntualComponent } from './presupuestopuntual/presupuestopun
     RouterModule,
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

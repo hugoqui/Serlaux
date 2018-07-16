@@ -3,84 +3,74 @@ var writtenExtras = "";
 function CalcularPuntual() {
     var hours = $("#hours").val(); //pendiente
     hours = parseInt(hours);
-    var subTotal = hours * 13;
-    $("#totalPerHours").text(subTotal.toFixed(2) + " €")
-
-
+    var basePrecio = 13;
     var kms = $("#distancia").val();
     kms = kms.replace("km", "");
     kms = kms.replace(",", ".");
     kms = parseFloat(kms);
 
-    var provinceCost = 4;
-    switch (true) {
-        case kms < 20:
-            provinceCost = 4;
-            break;
-        case kms < 30:
-            provinceCost = 5;
-            break;
-        case kms < 40:
-            provinceCost = 6;
-            break;
-        case kms < 50:
-            provinceCost = 7;
-            break;
-        default:
-            provinceCost = 4; //estaba antes a 0
-    }
+    var provinceCost = 0;
+    var provinceName = $("#provinceName").val().trim();
+    $.get("http://localhost:61856/api/values?provincia=" + provinceName,
+        function (data) {
+            provinceCost = 0;
+            for (let i = 0; i < data.length; i++) {
+                const element = data[i];
+                const desde = element.Desde;
+                const hasta = element.Hasta;
+                if (kms >= desde && kms <= hasta) {
+                    provinceCost = element.Desplazamiento;
+                    basePrecio = element.PrecioHora;
+                }
+            }
 
-    $("#provinceCost").text(provinceCost.toFixed(2) + " €");
+            var subTotal = hours * basePrecio;
+            $("#totalPerHours").text(subTotal.toFixed(2) + " €")
+            $("#provinceCost").text(provinceCost.toFixed(2) + " €");
 
-    var leaderPrice = 25;
-    var vacuumPrice = 25;
-    var equipmentPrice = 20;
+            var leaderPrice = 25;
+            var vacuumPrice = 25;
+            var equipmentPrice = 20;
+            var needsLeader = $("#leader").is(":checked");
+            var needsVacuum = $("#vacuum").is(":checked");
+            var needsEquipment = $("#basicEquipment").is(":checked");
 
-    var needsLeader = $("#leader").is(":checked");
-    var needsVacuum = $("#vacuum").is(":checked");
-    var needsEquipment = $("#basicEquipment").is(":checked");
-
-    var total = 0;
-
-    total = total + subTotal + provinceCost;
-
-    writtenExtras="";
-    //Descuento si tiene las 2
-    if (needsLeader && needsVacuum) {
-        leaderPrice = 20;
-        vacuumPrice = 20;
-    } else {
-        leaderPrice = 25;
-        vacuumPrice = 25;
-    }
-
-    if (needsLeader) {
-        $("#leaderPrice").removeClass("muted");
-        total = total + leaderPrice;
-        writtenExtras = writtenExtras + "Escalera: " + leaderPrice + "\n";
-    } else {
-        $("#leaderPrice").addClass("muted");
-    }
-
-    if (needsEquipment) {
-        $("#basicEquipmentPrice").removeClass("muted");
-        total = total + equipmentPrice;
-        writtenExtras = writtenExtras + "Equipo Básico: " + equipmentPrice + "\n";
-    } else {
-        $("#basicEquipmentPrice").addClass("muted");
-    }
-
-    if (needsVacuum) {
-        $("#vacuumPrice").removeClass("muted");
-        total = total + vacuumPrice;
-        writtenExtras = writtenExtras + "Aspiradora: " + vacuumPrice + "\n";
-    } else {
-        $("#vacuumPrice").addClass("muted");
-    }
-
-    $("#leaderPrice").text(leaderPrice.toFixed(2) + " €");
-    $("#vacuumPrice").text(vacuumPrice.toFixed(2) + " €");
-    $("#total").text(total.toFixed(2) + " €");
+            var total = 0;
+            total = total + subTotal + provinceCost;
+            writtenExtras = "";
+            //Descuento si tiene las 2
+            if (needsLeader && needsVacuum) {
+                leaderPrice = 20;
+                vacuumPrice = 20;
+            } else {
+                leaderPrice = 25;
+                vacuumPrice = 25;
+            }
+            if (needsLeader) {
+                $("#leaderPrice").removeClass("muted");
+                total = total + leaderPrice;
+                writtenExtras = writtenExtras + "Escalera: " + leaderPrice + "\n";
+            } else {
+                $("#leaderPrice").addClass("muted");
+            }
+            if (needsEquipment) {
+                $("#basicEquipmentPrice").removeClass("muted");
+                total = total + equipmentPrice;
+                writtenExtras = writtenExtras + "Equipo Básico: " + equipmentPrice + "\n";
+            } else {
+                $("#basicEquipmentPrice").addClass("muted");
+            }
+            if (needsVacuum) {
+                $("#vacuumPrice").removeClass("muted");
+                total = total + vacuumPrice;
+                writtenExtras = writtenExtras + "Aspiradora: " + vacuumPrice + "\n";
+            } else {
+                $("#vacuumPrice").addClass("muted");
+            }
+            $("#leaderPrice").text(leaderPrice.toFixed(2) + " €");
+            $("#vacuumPrice").text(vacuumPrice.toFixed(2) + " €");
+            $("#total").text(total.toFixed(2) + " €");
+        })
 }
 
 var othersControl = $("#others");
@@ -146,9 +136,7 @@ $(document).ready(
     }
 );
 
-
 function PuntualSend() {
-
     if ($("#direccion").val() != "") {
         if (isValid()) {
             $("#pacifier").show("slow");
@@ -156,7 +144,6 @@ function PuntualSend() {
             if ($("#othersText").val() != "") {
                 writtenExtras = writtenExtras + "Otros: " + $("#othersText").val() + "\n\r";
             }
-
             $.post("http://backend.foxclean.es/api/Clientes/Peticion/", {
                     NOMBRE: $("#name").val(),
                     CIUDAD: $("#direccion").val(),
@@ -174,13 +161,12 @@ function PuntualSend() {
                 function (data, status) {
                     if (data == "ok" && status == "success") {
                         alert("Muchas gracias por contactarnos. \nEn breve un asesor le llamará.");
-                        
+
                         location.reload();
                     } else {
                         alert("error, intente nuevamente");
                     }
                 });
-
         }
     } else {
         alert("Por favor, indique su dirección.")
@@ -188,7 +174,7 @@ function PuntualSend() {
 }
 
 function isValid() {
-    var errMsg = "";    
+    var errMsg = "";
     var name = $("#name").val();
     if (name == null || name == "") {
         errMsg = "Por favor, indique su nombre. \n";

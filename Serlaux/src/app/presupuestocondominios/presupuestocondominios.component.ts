@@ -1,20 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { createEmptyStateSnapshot } from "../../../node_modules/@angular/router/src/router_state";
+import { Observable } from "../../../node_modules/rxjs/Observable";
+import { async } from "../../../node_modules/@angular/core/testing";
 
-// import { NullAstVisitor } from '@angular/compiler';
-// import { totalmem } from 'os';
-// import { text } from '@angular/core/src/render3/instructions';
-
-// Declaramos las variables para jQuery
 declare var jQuery: any;
 declare var $: any;
 
 @Component({
-  selector: 'app-presupuestocondominios',
-  templateUrl: './presupuestocondominios.component.html',
-  styleUrls: ['./presupuestocondominios.component.css']
+    selector: "app-presupuestocondominios",
+    templateUrl: "./presupuestocondominios.component.html",
+    styleUrls: ["./presupuestocondominios.component.css"]
 })
 export class PresupuestocondominiosComponent implements OnInit {
-
     horas: number;
     viviendas: number;
     ventanas: number;
@@ -25,11 +23,14 @@ export class PresupuestocondominiosComponent implements OnInit {
     totalSemanal: number;
     totalMensual: number;
 
-    constructor() { }
+    tablaPrecio: any;
+    basePrecio = 9;
+
+    constructor(private http: HttpClient) {}
 
     ngOnInit() {
-        $('.nav-item').removeClass('active');
-        $('#quoteMenu').addClass('active');
+        $(".nav-item").removeClass("active");
+        $("#quoteMenu").addClass("active");
 
         this.horas = 1; // minimo de horas 1
         this.viviendas = 1;
@@ -39,76 +40,73 @@ export class PresupuestocondominiosComponent implements OnInit {
     }
 
     CalcularPrecio() {
-        let distancia = $('#distancia').val();
-        console.log('distancia sin convertir ', distancia);
-        this.desplazamiento = this.ConvertirKm(distancia);
-        console.log('distancia convertida  ', this.desplazamiento);
+        const distancia = $("#distancia").val();
+        const kmString = distancia.replace("km", "").trim();
+        const kms: number = parseInt(kmString, 10);
+        let resultado = 0;
 
-        if (distancia == null || distancia === '')  {
-            alert('Por favor, indique una localidad.');
-            $('#quoteTable').fadeOut();
-        } else {
-            let horasVentanas: number = this.ventanas / 10;
-            let horasViviendas: number = this.viviendas / 50;
-            console.log('horas ventanas ', horasVentanas);
-            console.log('horas viviendas ', horasViviendas);
+        const provinceName = $("#provinceName")
+            .val()
+            .trim();
 
-            let horas = horasVentanas + horasViviendas;
-            this.horas = horas;
-            horas = parseInt(horas.toString());
-            let diferencia = this.horas - horas;
-            if (diferencia >= 0.5) {
-                diferencia = 0.5;
-            } else {
-                diferencia = 0;
-            }
-            this.horas = horas + diferencia;
-            console.log('total horas ', this.horas);
+        this.http
+            .get("http://localhost:61856/api/values?provincia=" + provinceName)
+            .subscribe(response => {
+                this.tablaPrecio = response;
+                console.log(this.tablaPrecio);
 
-            if (this.horas < 1) {
-                this.horas = 1;
-            }
-            console.log('total horas final ', this.horas);
+                for (let i = 0; i < this.tablaPrecio.length; i++) {
+                    const element = this.tablaPrecio[i];
+                    const desde = element.Desde;
+                    const hasta = element.Hasta;
 
-            this.precioHora = ((9 * this.horas) + this.desplazamiento) / this.horas;
-            const _misdias = $('#days').val();
-            this.dias = parseInt(_misdias);
-            this.totalSemanal = this.precioHora * this.horas * _misdias;
+                    if (kms >= desde && kms <= hasta) {
+                        resultado = element.Desplazamiento;
+                        this.basePrecio = element.PrecioHora;
+                    }
+                }
+                this.desplazamiento = resultado;
 
-            this.totalMensual = this.totalSemanal * 4.34; // se promedia a 4.34 semanas al mes
-            $('#total').text(this.totalMensual.toFixed(2) + ' €');
+                if (distancia == null || distancia === "") {
+                    alert("Por favor, indique una localidad.");
+                    $("#quoteTable").fadeOut();
+                } else {
+                    const horasVentanas: number = this.ventanas / 10;
+                    const horasViviendas: number = this.viviendas / 50;
 
-            if (this.desplazamiento === 0) {
-                alert('Su localidad está fuera de el radio de atención. \nPuede contactar a un asesor para más información.');
-                $('#quoteTable').fadeOut();
-            } else {
-                $('#quoteTable').fadeIn();
-            }
-        }
+                    let horas = horasVentanas + horasViviendas;
+                    this.horas = horas;
+                    horas = parseInt(horas.toString(), 10);
+                    let diferencia = this.horas - horas;
+                    if (diferencia >= 0.5) {
+                        diferencia = 0.5;
+                    } else {
+                        diferencia = 0;
+                    }
+                    this.horas = horas + diferencia;
+                    if (this.horas < 1) {
+                        this.horas = 1;
+                    }
+
+                    this.precioHora =
+                        (this.basePrecio * this.horas + this.desplazamiento) /
+                        this.horas;
+                    const _misdias = $("#days").val();
+                    this.dias = parseInt(_misdias, 10);
+                    this.totalSemanal = this.precioHora * this.horas * _misdias;
+
+                    this.totalMensual = this.totalSemanal * 4.34; // se promedia a 4.34 semanas al mes
+                    $("#total").text(this.totalMensual.toFixed(2) + " €");
+
+                    if (this.desplazamiento === 0) {
+                        alert(
+                            "Su localidad está fuera de el radio de atención. \nPuede contactar a un asesor para más información."
+                        );
+                        $("#quoteTable").fadeOut();
+                    } else {
+                        $("#quoteTable").fadeIn();
+                    }
+                }
+            });
     }
-
-    ConvertirKm(texto: string) {
-        var kmString = texto.replace('km', '').trim();
-        console.log('kmStrin ', kmString);
-
-        let kms: number = parseInt(kmString);
-        console.log('Total kms ', kmString);
-
-        let resultado = 2;
-        if (kms <= 20) {
-            resultado = 4;
-        } else if (kms <= 30 && kms >= 21) {
-            resultado = 5;
-        } else if (kms <= 40 && kms >= 31) {
-            resultado = 6;
-        } else if (kms <= 50 && kms >= 41) {
-            resultado = 7;
-        } else {
-            resultado = 0;
-        }
-        console.log('Tarifa Aplicada +', resultado);
-        return resultado;
-    }
-
-
 }
