@@ -148,6 +148,7 @@ $(".get_map").click(function (e) {
                     .trim();
                 myLongitude = parseFloat(myLongitude);
                 CalculateRoutes();
+                
                 $("#search_location").val("");
             } else {
                 alert(

@@ -89,8 +89,8 @@ $(document).ready(
             .click(
                 () => {
                     setTimeout(function () {
-                        CalcularPuntual()
-                    }, 500)
+                        CalcularPuntual(); 
+                    }, 1000)
                 }
             );
 
